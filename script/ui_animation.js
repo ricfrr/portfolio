@@ -6,31 +6,32 @@ function response() {
     x.addEventListener("webkitAnimationEnd", end_animation,false);
     x.addEventListener("animationend", end_animation,false);
     x.addEventListener("oanimationend", end_animation,false);
-
+    time = 100
     if (x.className === "m_navbar m_navbar_animation" || x.className === "m_navbar") {
         
         x.className = "m_navbar responsive";
         x.animate([
             {bottom: '-24%' },
             {bottom: '0%' }
-        ], { duration: 100})
+        ], { duration: time})
         icon.animate([
             { transform: 'rotate(0deg)' }, 
             { transform: 'rotate(180deg)' } 
-        ], {duration:150, fill:"forwards"})
+        ], {duration:time, fill:"forwards"})
 
     } else {   
         var timer = setTimeout(function () {
             x.className = "m_navbar";
-            }, 100);
+            }, time);
         x.animate([
             {bottom: '0%' },
             {bottom: '-24%' }
-        ], { duration: 110})
+        ], { duration: time+20})
         icon.animate([
-            { transform: 'rotate(180deg)' }, 
-            { transform: 'rotate(0deg)' } 
-        ], {duration:150, fill:"forwards"})
+            { transform: 'rotate(180deg)' },
+            { transform: 'rotate(270deg)' } ,
+            { transform: 'rotate(360deg)' } 
+        ], {duration:time, fill:"forwards"})
 
       
     }
