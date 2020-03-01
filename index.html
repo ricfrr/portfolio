@@ -7,6 +7,8 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="loading.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
     <script src="script/jquery-3.4.1.min.js"></script>
 
     <script type="text/javascript" src="script/ui_animation.js"></script>
@@ -22,22 +24,16 @@
             <div></div>
         </div>
     </div>
-
-
-
-
     <div class="main">
         <!--NAVBAR-->
         <div class="m_navbar m_navbar_animation" id="responsive_navbar">
-            <a href="#home" class="active">Home</a>
-            <a href="#news">Curriculum</a>
-            <a href="#contact">Experience</a>
-            <a href="#contact">Projects</a>
-            <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="response()">&#9776;</a>
+            <div href="#home" class="active"> Home     <div href="javascript:void(0);"  class="icon m_nav_button" onclick="response()" ><i class="material-icons"  id="spin_arrow">arrow_upward</i></div>  </div>
+            <div href="#news">Curriculum</div>
+            <div href="#contact">Experience</div>
+            <div href="#contact">Projects</div>
+            
         </div>
         <!--NAVBAR-->
-
-
         <div class='container-fluid m_container'>
             <div class="row">
                 <div class="col-8 m_text_animation">
@@ -49,7 +45,7 @@
                         <div href="" class="role_text typewrite" data-period="1000" data-type='[ "Machine Learning Engineer", "Full-Stack Developer", "Robotics Engineer" ]'></div>
                             <!--Machine Learning <br> Engineer.-->
                         <div class="col-md-10 text-left pl-1 brief_presentation">
-                            Hi! Welcome to my portfolio, I am passionate about technology and evrything related to it.
+                            Hi! Welcome to my portfolio, I am passionate about technology and everything related to it.
                             Fell free to go around the website and
                             conctact me if you have any question.
                         </div>

@@ -15,22 +15,22 @@ body {
     z-index: 2;
   }
   
-  .m_navbar a {
+  .m_navbar div {
     float: left;
     display: block;
     color: black;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-    font-size: 17px;
+    font-size: 15pt;
   }
   
-  .m_navbar a:hover {
+  .m_navbar div:hover {
     background: #d4d1d1;
     color: black;
   }
   
-  .m_navbar a.active {
+  .m_navbar div.active {
     background-color:  #333;
     color: whitesmoke;
   }
@@ -41,23 +41,53 @@ body {
 
 
   @media screen and (max-width: 600px) {
-    .m_navbar a:not(:first-child) {display: none;}
-    .m_navbar a.icon {
-      float: right;
-      display: block;
+
+  .m_navbar div.active {
+    position: relative;
+    background-color:  #333;
+    color: whitesmoke;
+    width: 100%;
+  }
+
+    .m_navbar div {
+      width: 100%;
+      
+      color: black;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      font-size: 15pt;
+    }
+
+    .m_navbar div:not(:first-child) {display: none;}
+
+    .m_navbar div.icon {
+      font-size: 15pt;
+      width: 70%;
+      height: 100%;
+      background-color:  #333;
+      position: absolute;
+      display: initial;
+      color: rgb(205, 226, 15);
+      bottom: -3pt;
     }
   }
   
   @media screen and (max-width: 600px) {
     .m_navbar.responsive .icon {
+      font-size: 15pt;
+      width: 70%;
+      background-color:  #333;
       position: absolute;
-      right: 0;
-      bottom:0;
+      display: initial;
+      color:rgb(205, 226, 15);
+      bottom: 0pt;
     }
-    .m_navbar.responsive a {
+    .m_navbar div:not(:first-child) {display: none;}
+    .m_navbar.responsive div {
       float: none;
       display: block;
-      text-align: left;
+      /*text-align: left;*/
     }
   }
   
@@ -72,8 +102,6 @@ body {
     position: absolute;
   }
 
-  
-
   .m_container{
     width: 90% !important;
   }
@@ -87,8 +115,6 @@ body {
   .title_text {
     margin-top: 10%;
     font-size: 65pt;
-    grid-column: 1 / 3;
-    grid-row: 1;
     font-weight: bold;
     font-family: monospace;
   }
@@ -146,6 +172,38 @@ body {
     0%   {bottom:-100%}
     100% {bottom:0%}
   }
+
+  /* NavBar open and close animation */
+
+  @keyframes m_nav_open_animation {
+    0%   {width:10%}
+    100% {bottom:100%}
+  }
+
+  .m_navbar_open_animation{
+    animation-name: m_nav_open_animation;
+    animation-duration: 0.5s;
+    animation-delay: 0s;
+  }
+
+  @keyframes m_nav_open_animation {
+    0%   {bottom:-100%}
+    100% {bottom:0%}
+  }
+
+  .m_navbar_close_animation{
+    animation-name: m_nav_close_animation;
+    animation-duration: 0.5s;
+    animation-delay: 0s;
+  }
+
+  @keyframes m_nav_close_animation {
+    0%   {bottom:0%}
+    100% {bottom:-100%}
+  }
+
+  /* NavBar open and close animation */
+
 
   @media screen and (max-width: 600px) {
     

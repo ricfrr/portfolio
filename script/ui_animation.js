@@ -1,12 +1,45 @@
 function response() {
+
+
     var x = document.getElementById("responsive_navbar");
-    if (x.className === "m_navbar m_navbar_animation") {
-        x.className += " responsive";
-    } else {
-        x.className = "m_navbar m_navbar_animation";
+    var icon = document.getElementById('spin_arrow')
+    x.addEventListener("webkitAnimationEnd", end_animation,false);
+    x.addEventListener("animationend", end_animation,false);
+    x.addEventListener("oanimationend", end_animation,false);
+
+    if (x.className === "m_navbar m_navbar_animation" || x.className === "m_navbar") {
+        
+        x.className = "m_navbar responsive";
+        x.animate([
+            {bottom: '-24%' },
+            {bottom: '0%' }
+        ], { duration: 100})
+        icon.animate([
+            { transform: 'rotate(0deg)' }, 
+            { transform: 'rotate(180deg)' } 
+        ], {duration:150, fill:"forwards"})
+
+    } else {   
+        var timer = setTimeout(function () {
+            x.className = "m_navbar";
+            }, 100);
+        x.animate([
+            {bottom: '0%' },
+            {bottom: '-24%' }
+        ], { duration: 110})
+        icon.animate([
+            { transform: 'rotate(180deg)' }, 
+            { transform: 'rotate(0deg)' } 
+        ], {duration:150, fill:"forwards"})
+
+      
     }
 }
 
+function end_animation() {
+    //var x = document.getElementById("responsive_navbar");
+    //x.className = "m_navbar";
+}
 
 function load() {
     var timer = setTimeout(function () {
@@ -19,7 +52,7 @@ $(document).ready(function () {
     load();
 });
 
-var TxtType = function(el, toRotate, period) {
+var TxtType = function (el, toRotate, period) {
     this.toRotate = toRotate;
     this.el = el;
     this.loopNum = 0;
@@ -29,17 +62,17 @@ var TxtType = function(el, toRotate, period) {
     this.isDeleting = false;
 };
 
-TxtType.prototype.tick = function() {
+TxtType.prototype.tick = function () {
     var i = this.loopNum % this.toRotate.length;
     var fullTxt = this.toRotate[i];
 
     if (this.isDeleting) {
-    this.txt = fullTxt.substring(0, this.txt.length - 1);
+        this.txt = fullTxt.substring(0, this.txt.length - 1);
     } else {
-    this.txt = fullTxt.substring(0, this.txt.length + 1);
+        this.txt = fullTxt.substring(0, this.txt.length + 1);
     }
 
-    this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
+    this.el.innerHTML = '<span class="wrap">' + this.txt + '</span>';
 
     var that = this;
     var delta = 200 - Math.random() * 100;
@@ -47,26 +80,26 @@ TxtType.prototype.tick = function() {
     if (this.isDeleting) { delta /= 2; }
 
     if (!this.isDeleting && this.txt === fullTxt) {
-    delta = this.period;
-    this.isDeleting = true;
+        delta = this.period;
+        this.isDeleting = true;
     } else if (this.isDeleting && this.txt === '') {
-    this.isDeleting = false;
-    this.loopNum++;
-    delta = 500;
+        this.isDeleting = false;
+        this.loopNum++;
+        delta = 500;
     }
 
-    setTimeout(function() {
-    that.tick();
+    setTimeout(function () {
+        that.tick();
     }, delta);
 };
 
-window.onload = function() {
+window.onload = function () {
     var elements = document.getElementsByClassName('typewrite');
-    for (var i=0; i<elements.length; i++) {
+    for (var i = 0; i < elements.length; i++) {
         var toRotate = elements[i].getAttribute('data-type');
         var period = elements[i].getAttribute('data-period');
         if (toRotate) {
-          new TxtType(elements[i], JSON.parse(toRotate), period);
+            new TxtType(elements[i], JSON.parse(toRotate), period);
         }
     }
     // INJECT CSS
