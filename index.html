@@ -3,9 +3,17 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="loading.css">
     <script src="jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -18,9 +26,12 @@
         </div>
     </div>
 
+
+
+
     <div class="main">
         <!--NAVBAR-->
-        <div class="navbar" id="responsive_navbar">
+        <div class="m_navbar m_navbar_animation" id="responsive_navbar">
             <a href="#home" class="active">Home</a>
             <a href="#news">Curriculum</a>
             <a href="#contact">Experience</a>
@@ -28,36 +39,47 @@
             <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="response()">&#9776;</a>
         </div>
         <!--NAVBAR-->
-        <div class="grid-container content">
 
-            <div class='grid-content '>
-                <div class="title_text">
-                    Riccardo <br> Franceschini
+
+        <div class='container-fluid m_container'>
+            <div class="row">
+                <div class="col-8 m_text_animation">
+                    <div class="role">
+                        <div class="title_text">
+                            Riccardo <br> Franceschini
+                        </div>
+                        <div class="role_text">
+                            Machine Learning <br> Engineer.
+                        </div>
+                        <div class="col-md-10 text-left pl-1 brief_presentation">
+                            Hi! Welcome to my portfolio, I am passionate about technology and evrything related to it.
+                            Fell free to go around the website and
+                            conctact me if you have any question.
+                        </div>
+                    </div>
+
                 </div>
-                <br>
-            </div>
-            <img src="img/prof.jpg" class="profile_pic">
-            <div class="role_text">
-                Machine Learning Engineer.
+                <img src="img/prof.jpg" class="img-fluid profile_pic m_pic_animation">
+
             </div>
         </div>
-    </div>
 
 </body>
 
 <script>
     function response() {
         var x = document.getElementById("responsive_navbar");
-        if (x.className === "navbar") {
+        if (x.className === "m_navbar") {
             x.className += " responsive";
         } else {
-            x.className = "navbar";
+            x.className = "m_navbar";
         }
     }
 
+
     function load() {
         var timer = setTimeout(function () {
-            $(".main").fadeIn(600);
+            $(".main").fadeIn(0);
             $(".loader").fadeOut(400);
         }, 1000);
     }
