@@ -7,7 +7,9 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="loading.css">
-    <script src="jquery-3.4.1.min.js"></script>
+    <script src="script/jquery-3.4.1.min.js"></script>
+
+    <script type="text/javascript" src="script/ui_animation.js"></script>
 
 </head>
 
@@ -43,9 +45,9 @@
                         <div class="title_text">
                             Riccardo <br> Franceschini
                         </div>
-                        <div class="role_text">
-                            Machine Learning <br> Engineer.
-                        </div>
+                        
+                        <div href="" class="role_text typewrite" data-period="1000" data-type='[ "Machine Learning Engineer", "Full-Stack Developer", "Robotics Engineer" ]'></div>
+                            <!--Machine Learning <br> Engineer.-->
                         <div class="col-md-10 text-left pl-1 brief_presentation">
                             Hi! Welcome to my portfolio, I am passionate about technology and evrything related to it.
                             Fell free to go around the website and
@@ -61,27 +63,7 @@
 
 </body>
 
-<script>
-    function response() {
-        var x = document.getElementById("responsive_navbar");
-        if (x.className === "m_navbar m_navbar_animation") {
-            x.className += " responsive";
-        } else {
-            x.className = "m_navbar m_navbar_animation";
-        }
-    }
-
-
-    function load() {
-        var timer = setTimeout(function () {
-            $(".main").fadeIn(0);
-            $(".loader").fadeOut(400);
-        }, 1000);
-    }
-
-    $(document).ready(function () {
-        load();
-    });
-</script>
+<script src="/script/ui_animation.js"></script>
+    
 
 </html>
