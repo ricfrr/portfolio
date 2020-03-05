@@ -6,7 +6,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="loading.css">
+    <link rel="stylesheet" href="loader_curriculum.css">
+    <link rel="stylesheet" href="curriculum.css">
+    
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="script/jquery-3.4.1.min.js"></script>
@@ -18,7 +20,8 @@
 <body>
 
     <div class="loader">
-        <div class="lds-facebook">
+        <div class="lds-ellipsis">
+            <div></div>
             <div></div>
             <div></div>
             <div></div>
@@ -27,39 +30,31 @@
     <div class="main">
         <!--NAVBAR-->
         <div class="m_navbar m_navbar_animation" id="responsive_navbar">
-            <div href="#home" class="active"> Home     <div href="javascript:void(0);"  class="icon m_nav_button" onclick="response()" ><i class="material-icons"  id="spin_arrow">arrow_upward</i></div>  </div>
-            <div href="#news">Curriculum</div>
-            <div href="#contact">Experience</div>
-            <div href="#contact">Projects</div>
-            
+            <div href="javascript:void(0);" class="icon" onclick="response()"><i class="material-icons"
+                    id="spin_arrow">arrow_upward</i></div>
+            <a href="./index.html"> Home </a>
+            <a href="./curriculum.html" class="active">Curriculum</a>
+            <a href="#contact">Experience</a>
+            <a href="#contact">Projects</a>
+
         </div>
         <!--NAVBAR-->
         <div class='container-fluid m_container'>
             <div class="row">
-                <div class="col-8 m_text_animation">
+                <div class="col-12 m_text_animation">
                     <div class="role">
-                        <div class="title_text">
-                            Riccardo <br> Franceschini
+                        <div class="title_text" style="width: 100%;">
+                            Curriculum
                         </div>
-                        
-                        <div href="" class="role_text typewrite" data-period="1000" data-type='[ "Machine Learning Engineer", "Full-Stack Developer", "Robotics Engineer" ]'></div>
-                            <!--Machine Learning <br> Engineer.-->
-                        <div class="col-md-10 text-left pl-1 brief_presentation">
-                            Hi! Welcome to my portfolio, I am passionate about technology and everything related to it.
-                            Fell free to go around the website and
-                            conctact me if you have any question.
+                            <div class="timeline">
+                                <ol class="line_timeline"></ol>
                         </div>
-                        <a href="https://www.linkedin.com/in/ricfrr/" style="color: inherit;"><i class="fa fa-linkedin m_icon" ></i></a>
-                        <a href="https://github.com/ricfrr/" style="color: inherit;"><i class="fa fa-github m_icon"></i></a>
-                        <a href="mailto:riccardo.franceschini@live.it" style="color: inherit;"><i class="fa fa-envelope m_icon"></i></a>
-
-
 
 
                     </div>
 
                 </div>
-                <img src="img/prof.jpg" class="img-fluid profile_pic m_pic_animation">
+
 
             </div>
         </div>
@@ -67,6 +62,6 @@
 </body>
 
 <script src="/script/ui_animation.js"></script>
-    
+
 
 </html>

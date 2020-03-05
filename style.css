@@ -1,3 +1,13 @@
+body::before {
+  content: "";
+  position: fixed;
+  top: -10px;
+  left: 0;
+  width: 100%;
+  height: 10px;
+  box-shadow: 0px 0 10px rgba(0, 0, 0, 0.8);
+  z-index: 100;
+}
 body {
     margin: 0;
     font-family: monospace;
@@ -10,11 +20,36 @@ body {
     background-color: rgb(205, 226, 15);
     color: black;
     position: fixed;
+    border-radius: 10pt 10pt 0pt 0pt;
+    box-shadow: 0px -2pt 2pt -2pt #333;
     bottom: 0;
     width: 100%;
     z-index: 2;
   }
   
+  .m_navbar a {
+    color: inherit;
+    position: relative;
+    float: left;
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 15pt;
+  }
+  
+  .m_navbar a:hover {
+    background: #d4d1d1;
+    color: black;
+  }
+  
+  .m_navbar a.active {
+    background-color:  #333;
+    color: whitesmoke;
+  }
+
+
   .m_navbar div {
     float: left;
     display: block;
@@ -42,52 +77,49 @@ body {
 
   @media screen and (max-width: 600px) {
 
-  .m_navbar div.active {
+  .m_navbar a.active {
     position: relative;
     background-color:  #333;
     color: whitesmoke;
     width: 100%;
   }
 
-    .m_navbar div {
-      width: 100%;
-      
+    .m_navbar a {
+      width: 100%; 
       color: black;
       text-align: center;
       padding: 14px 16px;
       text-decoration: none;
       font-size: 15pt;
     }
-
-    .m_navbar div:not(:first-child) {display: none;}
-
+    .m_navbar a:not(:first-child) {display: none;}
     .m_navbar div.icon {
       font-size: 15pt;
-      width: 70%;
+      width: 100%;
       height: 100%;
       background-color:  #333;
-      position: absolute;
-      display: initial;
+      display: flex;
+      justify-content: center;
       color: rgb(205, 226, 15);
-      bottom: -3pt;
+     
     }
   }
   
   @media screen and (max-width: 600px) {
     .m_navbar.responsive .icon {
       font-size: 15pt;
-      width: 70%;
+      width: 100%;
+      height: 100%;
       background-color:  #333;
-      position: absolute;
-      display: initial;
-      color:rgb(205, 226, 15);
-      bottom: 0pt;
+      display: flex;
+      justify-content: center;
+      color: rgb(205, 226, 15);
     }
-    .m_navbar div:not(:first-child) {display: none;}
-    .m_navbar.responsive div {
-      float: none;
-      display: block;
-      /*text-align: left;*/
+
+    .m_navbar.responsive a:not(:first-child) {display: flex;}
+    .m_navbar.responsive a {
+      display: flex;
+      justify-content: center;
     }
   }
   
@@ -96,6 +128,7 @@ body {
   .main {
     display:none;
     margin-bottom: 30px;
+    width: 100%;
     max-width: 100%;
     height: 100%;
     overflow-x: hidden;
@@ -129,6 +162,7 @@ body {
   }
 
   .brief_presentation{
+    border-radius: 0pt 0pt 5pt 5pt;
     font-size: 16pt;
     color: gainsboro;
     background-color: #333333;
@@ -244,17 +278,42 @@ body {
     
   }
 
+  /* Arrow  */
   .arrow-right {
     border: solid black;
-    border-width: 0 3px 3px 0;
-    display: inline-block;
+    width: 20pt;
+    height: 20pt;
+    border-width: 0 3pt 3pt 0;
+    border-radius: 2pt;
+    display: flex;
+    justify-content: flex-start;
     padding: 3px;
     transform: rotate(-45deg);
     -webkit-transform: rotate(-45deg);
+   
+  }
+  
+  .m_arrow_animation{
     animation-name: arrow_animation;
-    animation-duration: 10s;
+    animation-duration: 1s;
     animation-delay: 0s;
     animation-iteration-count:infinite;
+    animation-direction: alternate;
+  }
+
+  @keyframes arrow_animation {
+    0%   {left:0%}
+    100% {left:5%}
+  }
+
+  /* Begin Text */
+
+  .begin_text{
+    justify-content: flex-end;
+    display: flex;
+    width: 100%;
+    margin-left: auto;
+    margin-right: 0;
   }
 
 
