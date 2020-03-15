@@ -207,10 +207,6 @@
     font-size: 19pt;
     font-family: monospace;
   }
-  .container {
-    height: 30%;
-  }
-
 }
 @media screen and (max-width: 600px) {
   
