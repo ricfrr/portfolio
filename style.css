@@ -124,6 +124,11 @@ body {
   }
   
   @media screen and (max-width: 600px) {
+
+    .profile_pic{
+      filter: blur(5px);
+    }
+
     .m_navbar.responsive .icon {
       font-size: 15pt;
       width: 100%;
@@ -263,7 +268,7 @@ body {
       width: 100% !important;
     }
     .title_text {
-      margin-top: 45%;
+      margin-top: 10%;
       font-size: 30pt;
       font-weight: bold;
       font-family: monospace;

@@ -83,7 +83,7 @@
   position: relative;
   max-width: 1200px;
   margin: 0 auto;
-  height :85%;
+  height :100%;
   
 }
 
@@ -212,7 +212,6 @@
   
   .content {
     padding: 10px 15px;
-  
   }
   .academic_text{
     font-size: 40pt;
@@ -238,7 +237,7 @@
   }
 
   .timeline{
-    height :77vh;
+    height :100vh;
   }
   /* Place the timelime to the left */
   .timeline::after {
@@ -298,4 +297,10 @@
   }
 
 
+}
+
+@media screen and (max-height: 600px) {
+  .last_academic {
+    margin-bottom: 40pt;
+  }
 }
