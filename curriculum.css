@@ -84,7 +84,6 @@
   max-width: 1200px;
   margin: 0 auto;
   height :100%;
-  
 }
 
 /* The actual timeline (the vertical ruler) */
@@ -237,7 +236,7 @@
   }
 
   .timeline{
-    height :100vh;
+    height :100%;
   }
   /* Place the timelime to the left */
   .timeline::after {
@@ -299,7 +298,7 @@
 
 }
 
-@media screen and (max-height: 600px) {
+@media screen and (max-height: 750px) {
   .last_academic {
     margin-bottom: 40pt;
   }

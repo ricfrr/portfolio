@@ -1,0 +1,44 @@
+html,body { height:100%; }
+.year_uni{
+    font-weight: bold;
+  
+    font-size: 20pt;
+    font-family: monospace;
+}
+
+@media screen and (max-width: 992px) {
+.academic_text{
+    font-size: 50pt;
+    font-weight: bold;
+    font-family: monospace;
+}
+.presentation_text{
+    font-size: 14pt;
+    font-family: monospace;
+    text-align: left;
+    top :0pt;
+}
+    
+.uni_text{
+    font-size: 13pt;
+    font-family: monospace;
+    
+}
+.year_uni{
+    font-size: 19pt;
+    font-family: monospace;
+}
+}
+
+@media screen and (max-width: 600px) {
+    .year_uni{
+        font-size: 17pt;
+        font-family: monospace;
+      }   
+}
+
+@media screen and (min-width: 430px)  and (min-height: 650px){
+    .container {
+      height: 20% ;
+    }
+  }
