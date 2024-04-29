@@ -241,7 +241,7 @@
   /* Place the timelime to the left */
   .timeline::after {
     left: 30px;/*4vw;*/
-    
+    /* height: 100vh; */
   }
   
   /* Full-width containers */

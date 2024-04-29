@@ -6,14 +6,14 @@ function response() {
     x.addEventListener("webkitAnimationEnd", end_animation,false);
     x.addEventListener("animationend", end_animation,false);
     x.addEventListener("oanimationend", end_animation,false);
-    time = 120
+    time = 120;
     
     
     if (x.className === "m_navbar m_navbar_animation" || x.className === "m_navbar" ) {
         x.className = "m_navbar responsive";
         x.animate([
             {bottom: '-24%' },
-            {bottom: '0%' }
+            {bottom: '15pt' }
         ], { duration: time, fill:'forwards'})
         icon.animate([
             { transform: 'rotate(0deg)' }, 
@@ -29,8 +29,8 @@ function response() {
             x.className = "m_navbar";
             }, time);
         x.animate([
-            {bottom: '0%' },
-            {bottom: '-29%' }
+            {bottom: '15pt' },
+            {bottom: '-24%' }
         ], { duration: time+10})
         icon.animate([
             { transform: 'rotate(180deg)' },
@@ -43,8 +43,8 @@ function response() {
 }
 
 function end_animation() {
-    //var x = document.getElementById("responsive_navbar");
-    //x.className = "m_navbar";
+    // var x = document.getElementById("responsive_navbar");
+    // x.className = "m_navbar";
 }
 
 function load() {
