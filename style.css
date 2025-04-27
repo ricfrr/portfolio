@@ -1,406 +1,834 @@
-body::before {
-  content: "";
-  position: fixed;
-  top: -10px;
-  left: 0;
-  width: 100%;
-  height: 10px;
-  box-shadow: 0px 0 10px rgba(0, 0, 0, 0.8);
-  z-index: 100;
+/* --- Base Color Definitions --- */
+:root {
+    --color-yellow-lime: #AEFF00;
+    --color-black: #1a1a1a;
+    --color-grey-darker: #1f1f1f; /* Slightly darker grey */
+    --color-grey-dark: #2c2c2c;
+    --color-grey-medium: #555;
+    --color-grey-light: #aaaaaa; /* Lighter grey for less emphasis */
+    --color-white: #ffffff;
+    --color-off-white: #f8f8f8; /* Very light grey for light mode bg */
+
+    --nav-height: 70px;
 }
-body {
+
+/* --- Theme Variable Setup --- */
+:root, /* Dark theme (default) */
+html[data-theme="dark"] {
+    --bg-color: var(--color-grey-darker);
+    --text-color: var(--color-grey-light);
+    --text-color-strong: var(--color-white); /* For headings, important text */
+    --header-bg: var(--color-black);
+    --footer-bg: var(--color-black);
+    --section-separator: var(--color-grey-medium);
+    --card-bg: var(--color-grey-dark); /* Background for job/publication cards */
+    --link-color: var(--color-yellow-lime);
+    --link-hover-color: var(--color-white);
+    --bubble-text: var(--color-grey-light);
+    --bubble-text-active: var(--color-black); /* Text inside the yellow indicator */
+    --indicator-bg: var(--color-yellow-lime);
+    --toggle-icon-color: var(--color-yellow-lime);
+}
+
+html[data-theme="light"] {
+    --bg-color: var(--color-off-white); /* Use very light grey */
+    --text-color: var(--color-grey-dark); /* Darker text for light bg */
+    --text-color-strong: var(--color-black);
+    --header-bg: #e5e5e5; /* Lighter header */
+    --footer-bg: #e5e5e5;
+    --section-separator: #cccccc;
+    --card-bg: var(--color-white);
+    --link-color: #82b600; /* Adjust lime green for better contrast on light bg */
+    --link-hover-color: var(--color-black);
+    --bubble-text: var(--color-grey-dark);
+    --bubble-text-active: var(--color-black); /* Active bubble text still dark */
+    --indicator-bg: var(--color-yellow-lime); /* Keep indicator bright */
+    --toggle-icon-color: var(--color-black); /* Dark icon on light header */
+}
+
+
+/* --- Basic Reset & Body Flexbox for Footer --- */
+*, *::before, *::after {
+    box-sizing: border-box;
     margin: 0;
-    font-family: monospace;
-    /* overflow: hidden; */
-    overflow-x: hidden;
-    font-size: 14pt;
-  }
-/* ----- SrollBar ------- */
-/* width */
-::-webkit-scrollbar {
-  width: 5pt;
+    padding: 0;
 }
 
-/* Track */
- 
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #333; 
-  border-radius: 5pt;
+html {
+    scroll-behavior: smooth;
 }
 
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #333; 
-  border-radius: 5pt;
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    line-height: 1.6;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease; /* Theme change transition */
 
-}
-/*---- NAVBAR -------*/
-  .m_navbar {
-    overflow: hidden;
-    background-color: rgb(205, 226, 15);
-    color: black;
-    position: fixed;
-    border-radius: 5pt 5pt 5pt 5pt;
-    /* center the position of the navbar */
-    left: 50%;
-    transform: translateX(-50%);
-    box-shadow: 0px -2pt 2pt -2pt #333;
-    bottom: 15pt;
-    width: 80%;
-    align-items: center;
-    justify-content: center;
-    display: flex;  
-    /*justify-content: center; 
-    align-items: center; */
-    /* height: calc(3vh + 1vw);  */
-    /* height: 10pt; */
-
-    z-index: 2;
-    }
-  
-  .m_navbar a {
-    color: inherit;
-    position: relative;
-    float: left;
-    display: block;
-    color: black;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    /* font-size: 15pt; */
-    font-size: 2vh; /* Adjust this value to match the navbar height */
-
-  }
-  
-  .m_navbar a:hover {
-    background: #d4d1d1;
-    height: 100%;
-    /* center the the text vertically */
-    border-radius: 5pt 5pt 5pt 5pt;
+    /* Flexbox for sticky footer */
     display: flex;
-    justify-content: center;
-    align-items: center;  
+    flex-direction: column;
+    min-height: 100vh;
 
-    color: black;
-  }
-  
-  .m_navbar a.active {
-    background-color:  #333;
-    height: 100%;
-    /* center the the text vertically */
-    border-radius: 5pt 5pt 5pt 5pt;
-    display: flex;
-    justify-content: center;
-    align-items: center;  
+    /* Padding to prevent content from going under fixed nav */
+    padding-bottom: var(--nav-height);
+}
 
-    color: whitesmoke;
-  }
+/* Main content area takes up available space */
+.content-area {
+    flex-grow: 1;
+    width: 100%; /* Ensure it takes full width */
+    padding-top: 40px; /* Space from top */
+}
 
 
-  .m_navbar div {
-    float: left;
-    display: block;
-    color: black;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    /* font-size: 15pt; */
-
-  }
-  
-  .m_navbar div:hover {
-    background: #d4d1d1;
-    color: black;
-  }
-  
-  .m_navbar div.active {
-    background-color:  #333;
-    /* change the height to match the navbar height */
-
-    color: whitesmoke;
-  }
-
-  .m_navbar .icon {
-    display: none;
-  }  
-
-
-  @media screen and (max-width: 600px) {
-
-    .m_navbar {
-      border-radius: 10px;
-      display: flex;
-      flex-direction: column;
-
-  }
-
-  .m_navbar a.active {
-    position: relative;
-    background-color:  #333;
-    color: whitesmoke;
+/* --- Header, Navigation & Theme Toggle --- */
+.main-header {
+    background-color: var(--header-bg);
+    position: fixed; /* Keep it fixed */
+    bottom: 0;
+    left: 0;
     width: 100%;
-  }
+    z-index: 1000;
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+    height: var(--nav-height);
+    transition: background-color 0.3s ease;
+}
 
+.navbar {
+    display: flex; /* Arrange toggle and nav links container */
+    align-items: center;
+    justify-content: center; /* Center nav links, toggle goes to side */
+    max-width: 1100px; /* Wider max width for toggle placement */
+    height: 100%;
+    margin: 0 auto;
+    padding: 0 15px; /* Padding for spacing */
+    position: relative; /* For absolute positioning of toggle */
+}
 
-  #spin_arrow {
+/* Theme Toggle Button */
+#theme-toggle {
+    position: absolute; /* Position relative to navbar */
+    left: 15px; /* Position on the left */
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    color: var(--toggle-icon-color); /* Use theme variable */
+    transition: color 0.3s ease;
+}
+#theme-toggle svg {
+    display: block; /* Prevents extra space */
+    width: 24px;
+    height: 24px;
+    transition: transform 0.3s ease;
+}
+#theme-toggle:hover svg {
+    transform: scale(1.1) rotate(15deg);
+}
+
+/* Navigation Links Centering & Styling */
+.nav-links-container {
+    position: relative;
+    display: flex; /* Use flex to help center */
+    justify-content: center; /* Center the ul within this container */
+    flex-grow: 1; /* Allow it to take available space */
+    max-width: 600px; /* Control max width of bubbles */
+}
+
+.nav-links {
+    list-style: none;
     display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    width: 100%; /* Take width of container */
+}
+
+.nav-links li {
+    margin-bottom: 0;
+    /* Let flexbox handle spacing */
+}
+
+.nav-links a {
+    display: flex; /* Use flex to center text vertically and horizontally */
     justify-content: center;
     align-items: center;
-
-    margin-left: auto;
-    margin-right: auto;
-    
-  }
-
-
-    .m_navbar a {
-      width: 100%; 
-      color: black;
-      text-align: center;
-      padding: 14px 16px;
-      text-decoration: none;
-      font-size: 15pt;
-    }
-    .m_navbar a:not(:first-child) {display: none;}
-    .m_navbar div.icon {
-      font-size: 15pt;
-      width: 100%;
-      height: 100%;
-      background-color:  #333;
-      border-radius: 5pt 5pt 5pt 5pt;
-      display: flex;
-      justify-content: center;
-      color: rgb(205, 226, 15);
-     
-    }
-  }
-  
-  @media screen and (max-width: 600px) {
-
-    .profile_pic{
-      filter: blur(5px);
-    }
-
-
-    .m_navbar.responsive .icon {
-      font-size: 15pt;
-      width: 100%;
-      height: 100%;
-      background-color:  #333;
-      display: flex;
-      justify-content: center;
-      color: rgb(205, 226, 15);
-    }
-
-    .m_navbar.responsive a:not(:first-child) {display: flex;}
-    .m_navbar.responsive a {
-      display: flex;
-      justify-content: center;
-    }
-  }
-  
-  /*---- NAVBAR -------*/
-
-  .main {
-    display:none;
-    margin-bottom: 30px;
-    width: 100%;
-    max-width: 100%;
-    overflow-x: hidden;
-    position: absolute;
-  }
-
-  @media screen and (min-width: 600px) {
-    .main {
-      height: 100%;
-    }
-  }
-
-  .m_container{
-    width: 90% !important;
-  }
-
-  /*Content*/
-
-  .content{
-    padding-left: 5pt;
-  }
-
-  .title_text {
-    margin-top: 10%;
-    font-size: 65pt;
+    min-height: 44px; /* Ensure minimum touch target size & vertical space */
+    padding: 5px 18px; /* Adjust padding - vertical padding helps centering */
+    color: var(--bubble-text);
     font-weight: bold;
-    font-family: monospace;
-  }
+    text-decoration: none;
+    border-radius: 25px;
+    transition: color 0.3s ease;
+    position: relative;
+    z-index: 2;
+    background-color: transparent;
+    text-align: center;
+    white-space: nowrap;
+}
 
-  .profile_pic{
+.nav-links li.active a {
+    color: var(--bubble-text-active); /* Active text color */
+}
+
+/* Moving Indicator */
+.nav-indicator {
     position: absolute;
-    width: auto;
-    height: 100vh;
-    margin-right: 0;
-    margin-left: 45%;
-    z-index: -1;
-  }
+    bottom: 8px; /* Adjust position slightly */
+    height: calc(100% - 16px); /* Adjust height */
+    max-height: 44px; /* Match link min-height */
+    background-color: var(--indicator-bg);
+    border-radius: 25px;
+    z-index: 1;
+    transition: left 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55), width 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55), background-color 0.3s ease;
+    left: 0;
+    width: 0;
+}
 
-  .brief_presentation{
-    border-radius: 0pt 0pt 5pt 5pt;
-    font-size: 16pt;
-    color: gainsboro;
-    background-color: #333333;
-  }
-  .role_text {
-    color : #333333;
-    grid-column: 1;
-    grid-row: 2;
-    font-size: 35pt;
-  }
+/* --- Section Visibility & Styling --- */
+.content-section {
+    display: none;
+    padding: 40px 20px;
+    max-width: 900px;
+    margin: 0 auto;
+    opacity: 0;
+    animation: fadeInSection 0.5s ease-out forwards;
+}
 
-  .m_text_animation{
-    animation-name: m_text_animation;
-    animation-duration: 1s;
-    animation-delay: 0s;
-  }
+.content-section.active-section {
+    display: block;
+}
 
-  @keyframes m_text_animation {
-    0%   {left:-100%}
-    100% {left:0%}
-  }
-
-  .m_pic_animation{
-    animation-name: m_pic_animation;
-    animation-duration: 1s;
-    animation-delay: 0s;
-  }
-
-  @keyframes m_pic_animation {
-    0%   {top:-100%}
-    100% {top:0%}
-  }
-
-  .m_navbar_animation{
-    animation-name: m_nav_animation;
-    animation-duration: 1s;
-    animation-delay: 0s;
-  }
-
-  @keyframes m_nav_animation {
-    0%   {bottom:-100%}
-    100% {bottom:0%}
-  }
-
-  /* NavBar open and close animation */
-
-  @keyframes m_nav_open_animation {
-    0%   {width:10%}
-    100% {bottom:100%}
-  }
-
-  .m_navbar_open_animation{
-    animation-name: m_nav_open_animation;
-    animation-duration: 0.5s;
-    animation-delay: 0s;
-  }
-
-  @keyframes m_nav_open_animation {
-    0%   {bottom:-100%}
-    100% {bottom:0%}
-  }
-
-  .m_navbar_close_animation{
-    animation-name: m_nav_close_animation;
-    animation-duration: 0.5s;
-    animation-delay: 0s;
-  }
-
-  @keyframes m_nav_close_animation {
-    0%   {bottom:0%}
-    100% {bottom:-100%}
-  }
-
-  /* NavBar open and close animation */
-
-
-  @media screen and (max-width: 600px) {
-    
-    .m_container{
-      width: 100% !important;
+@keyframes fadeInSection {
+    to {
+        opacity: 1;
     }
+}
 
-    .title_text {
-      margin-top: 10%;
-      font-size: 30pt;
-      font-weight: bold;
-      font-family: monospace;
+/* General Content Styling */
+h2 {
+    color: var(--link-color); /* Use link color for main headings */
+    margin-bottom: 20px;
+    font-size: 2rem;
+    transition: color 0.3s ease;
+}
+
+h3 {
+    color: var(--text-color-strong); /* Use stronger text color */
+    margin-bottom: 5px;
+    transition: color 0.3s ease;
+}
+
+p, ul {
+    margin-bottom: 15px;
+}
+
+a:not(.nav-links a) {
+    color: var(--link-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+a:not(.nav-links a):hover {
+    color: var(--link-hover-color);
+    text-decoration: underline;
+}
+
+article {
+    margin-bottom: 30px;
+    padding: 20px; /* Add padding */
+    border-radius: 8px; /* Rounded corners */
+    background-color: var(--card-bg); /* Use card background color */
+    border-bottom: none; /* Remove previous border */
+    transition: background-color 0.3s ease;
+}
+article:last-of-type {
+    margin-bottom: 0; /* No margin on last article */
+}
+
+
+/* --- Footer --- */
+.main-footer {
+    text-align: center;
+    padding: 15px 20px; /* Reduced padding slightly */
+    color: var(--text-color); /* Use theme text color */
+    font-size: 0.9rem;
+    width: 100%; /* Ensure it spans width */
+    /* No margin-bottom needed due to body padding */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* --- Responsiveness Adjustments --- */
+@media (max-width: 640px) {
+    /* Move toggle inside bubble area if needed, or adjust padding */
+    #theme-toggle {
+        left: 10px;
     }
-    .profile_pic{
-      overflow-x: hidden;
-      overflow: hidden;
-      position: absolute;
-      height: 100%;
-      margin-left: 30%;
-      z-index: -1;
-      object-fit: cover;
+    .navbar {
+         padding: 0 5px; /* Less padding on smaller screens */
     }
-    .role_text {
-      color : #333333;
-      font-size: 20pt;
+    .nav-links-container {
+         /* Ensure it doesn't overlap toggle */
+         margin-left: 40px;
+         margin-right: 10px; /* Adjust if needed */
     }
-    .brief_presentation{
-      font-size: 12pt;
-      color: gainsboro;
-      background-color: #333333;
+    .nav-links a {
+        padding: 5px 12px;
+        font-size: 0.85rem;
+        min-height: 40px;
     }
-    
-  }
+     .nav-indicator {
+         max-height: 40px;
+    }
+}
+@media (max-width: 480px) {
+     .nav-links a {
+        padding: 5px 8px; /* Even less padding */
+        font-size: 0.8rem;
+    }
+}
 
-  .m_icon{
-    margin-top: 8pt;
-    margin-right: 0.1%;
-    font-size: 2rem!important;
-    
-  }
 
-  /* Arrow  */
-  .arrow-right {
-    border: solid black;
-    width: 20pt;
-    height: 20pt;
-    border-width: 0 3pt 3pt 0;
-    border-radius: 2pt;
-    display: flex;
-    justify-content: flex-start; /* Center horizontally */
-    align-items: center; /* Center vertically */
-    padding: 3px;
-    transform: rotate(-45deg);
-    -webkit-transform: rotate(-45deg);
-  }
-  
-  
-  .m_arrow_animation{
-    animation-name: arrow_animation;
-    animation-duration: 1s;
-    animation-delay: 0s;
-    animation-iteration-count:infinite;
-    animation-direction: alternate;
-  }
 
-  @keyframes arrow_animation {
-    0%   {left:0%}
-    100% {left:5%}
-  }
 
-  /* Begin Text */
 
-  .begin_text{
-    justify-content: flex-end;
-    display: flex;
+/* --- Theme Variable Setup --- (Keep previous theme variables) */
+:root { /* Dark theme (default) */
+    /* ... previous variables ... */
+    --nav-height: 60px; /* Adjusted height slightly for floating effect */
+    --nav-bottom-margin: 20px; /* Margin below floating nav */
+}
+
+/* ... other theme variables for dark and light mode ... */
+
+
+/* --- Basic Reset & Body Flexbox for Footer --- */
+/* ... previous reset styles ... */
+
+body {
+    /* ... previous body styles ... */
+    /* Increase padding-bottom to account for nav height AND margin */
+    padding-bottom: calc(var(--nav-height) + var(--nav-bottom-margin) + 10px); /* Added extra 10px buffer */
+}
+
+/* Main content area takes up available space */
+.content-area {
+    flex-grow: 1;
     width: 100%;
-    margin-left: auto;
-    margin-right: 0;
-  }
+    padding-top: 40px;
+}
+
+
+/* --- Header, Navigation (Floating Style) & Theme Toggle --- */
+.main-header {
+    /* Floating Effect */
+    max-width: 650px; /* Max width for the floating bar */
+    width: calc(100% - 30px); /* Width relative to viewport, with side gaps */
+    margin-left: auto;  /* Center the bar */
+    margin-right: auto; /* Center the bar */
+    margin-bottom: var(--nav-bottom-margin); /* Space below the bar */
+    border-radius: 35px; /* Fully rounded ends */
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2); /* Enhanced shadow */
+
+    /* Core properties */
+    background-color: var(--header-bg);
+    position: fixed;
+    bottom: 0; /* Position remains at bottom */
+    left: 0;  /* Needed for margin auto centering */
+    right: 0; /* Needed for margin auto centering */
+    z-index: 1000;
+    height: var(--nav-height);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Ensure navbar content fits within the rounded header */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center nav links container */
+    width: 100%; /* Take full width of parent (.main-header) */
+    height: 100%;
+    padding: 0 10px; /* Internal padding */
+    position: relative;
+}
+
+/* Theme Toggle Button - Adjust positioning if needed */
+#theme-toggle {
+    position: absolute;
+    left: 20px; /* Adjust left offset within the rounded bar */
+    top: 50%;
+    transform: translateY(-50%);
+    /* ... other toggle styles remain the same ... */
+    color: var(--toggle-icon-color);
+}
+#theme-toggle svg {
+    display: block;
+    width: 22px; /* Slightly smaller icon if needed */
+    height: 22px;
+}
+
+/* Navigation Links Container */
+.nav-links-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+    /* Max width might not be needed if .main-header controls width */
+    /* max-width: 550px; */
+    margin: 0 45px; /* Add margin to avoid overlap with toggle/edges */
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    justify-content: space-around; /* Distribute links */
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    overflow: hidden; /* Hide potential overflow if too many items */
+}
+
+.nav-links li {
+    margin-bottom: 0;
+    flex-shrink: 0; /* Prevent items shrinking too much */
+}
+
+.nav-links a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 40px; /* Adjusted min-height */
+    padding: 5px 12px; /* Adjusted padding */
+    color: var(--bubble-text);
+    font-weight: bold;
+    font-size: 0.9rem; /* Adjust font size if needed */
+    text-decoration: none;
+    border-radius: 20px; /* Bubble shape */
+    transition: color 0.3s ease;
+    position: relative;
+    z-index: 2;
+    background-color: transparent;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.nav-links li.active a {
+    color: var(--bubble-text-active);
+}
+
+/* Moving Indicator */
+.nav-indicator {
+    position: absolute;
+    bottom: 6px; /* Adjust position */
+    height: calc(100% - 12px); /* Adjust height */
+    max-height: 40px;
+    background-color: var(--indicator-bg);
+    border-radius: 20px; /* Match link bubble shape */
+    z-index: 1;
+    transition: left 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55), width 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55), background-color 0.3s ease;
+    left: 0;
+    width: 0;
+}
+
+/* --- Section Styling & Content --- */
+/* ... content-section, h2, h3, p, article styles remain largely the same ... */
+/* You might want specific styling for .education-item */
+.education-item {
+    margin-bottom: 25px;
+    padding: 15px;
+    border-radius: 6px;
+    background-color: var(--card-bg);
+     transition: background-color 0.3s ease;
+}
+.education-item h3 {
+    margin-bottom: 3px;
+}
+.education-item p em {
+    font-size: 0.9em;
+    color: var(--text-color);
+}
+.education-item ul {
+    margin-top: 10px;
+    margin-left: 20px; /* Indent list */
+     list-style-type: disc; /* Or circle */
+}
+
+
+/* --- Footer --- */
+.main-footer {
+    /* ... footer styles remain the same ... */
+    color: var(--text-color);
+}
+
+/* --- Responsiveness --- */
+@media (max-width: 700px) {
+    /* Adjust floating bar for smaller screens if needed */
+    .main-header {
+        max-width: none; /* Allow full width minus margin */
+        width: calc(100% - 20px); /* Less horizontal margin */
+        margin-bottom: 15px; /* Slightly less margin */
+        border-radius: 30px;
+    }
+    .nav-links a {
+        font-size: 0.85rem;
+        padding: 5px 10px;
+    }
+    #theme-toggle {
+        left: 15px; /* Adjust position */
+    }
+     .nav-links-container {
+         margin: 0 40px; /* Adjust margins */
+    }
+}
+
+@media (max-width: 480px) {
+     .nav-links a {
+        font-size: 0.8rem; /* Further reduce font size */
+        padding: 4px 8px;
+    }
+    .nav-indicator {
+        bottom: 8px;
+        height: calc(100% - 16px);
+    }
+    .main-header {
+         width: calc(100% - 16px); /* Even less margin */
+         margin-bottom: 10px;
+         border-radius: 25px; /* Slightly smaller radius */
+         height: calc(var(--nav-height) - 5px); /* Slightly reduce height */
+    }
+     #theme-toggle svg {
+        width: 20px;
+        height: 20px;
+    }
+     body { /* Adjust padding for smaller nav height/margin */
+        padding-bottom: calc(var(--nav-height) + var(--nav-bottom-margin));
+    }
+
+}
+
+/* --- Theme Variable Setup --- */
+/* ... keep previous variables ... */
+:root {
+    /* ... */
+    --footer-padding-vertical: 20px; /* Padding above/below footer text */
+}
+
+/* --- Basic Reset & Body Flexbox for Footer --- */
+/* ... keep previous body styles ... */
+body {
+    /* ... previous body styles ... */
+    /* Padding bottom might need slight adjustment if footer height changes significantly,
+       but text-only shouldn't change it much */
+    padding-bottom: calc(var(--nav-height) + var(--nav-bottom-margin) + 10px);
+}
+
+/* --- Header, Navigation (Floating Style) & Theme Toggle --- */
+/* ... main-header, navbar styles remain the same ... */
+
+/* Theme Toggle Button - Default state (inside navbar) */
+#theme-toggle {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    color: var(--toggle-icon-color);
+    transition: color 0.3s ease, transform 0.3s ease;
+    z-index: 1010; /* Ensure it's above nav bar background */
+}
+#theme-toggle svg {
+    display: block;
+    width: 22px;
+    height: 22px;
+    transition: transform 0.3s ease;
+}
+#theme-toggle:hover svg {
+    transform: scale(1.1) rotate(15deg);
+}
+
+
+/* Navigation Links Container - Adjust margin for toggle space */
+.nav-links-container {
+    /* ... previous styles ... */
+    margin: 0 45px; /* Ensure space from potential toggle position */
+    /* Consider adding slight horizontal padding if needed */
+    /* padding: 0 5px; */
+}
+
+.nav-links {
+    /* ... previous styles ... */
+    /* Optional: Add scroll for extreme cases, but try fitting first */
+    /* overflow-x: auto; */
+    /* scrollbar-width: thin; */ /* Firefox */
+}
+/* If using overflow-x: auto, add some padding for scrollbar space */
+/* .nav-links { padding-bottom: 5px; } */
+
+
+/* ... nav-links li, a, nav-indicator styles remain the same ... */
+
+
+/* --- Footer --- */
+.main-footer {
+    text-align: center;
+    padding: var(--footer-padding-vertical) 20px; /* Padding above/below text */
+    /* Remove background */
+    /* background-color: var(--footer-bg); */
+    color: var(--text-color); /* Use theme text color */
+    font-size: 0.9rem;
+    width: 100%;
+    margin-top: 20px; /* Ensure some space above footer text */
+    transition: color 0.3s ease; /* Transition for theme change */
+}
+
+
+/* --- Responsiveness --- */
+
+/* Adjustments for standard small/medium screens */
+@media (max-width: 700px) {
+    .main-header {
+        max-width: none;
+        width: calc(100% - 20px);
+        margin-bottom: 15px;
+        border-radius: 30px;
+    }
+    .nav-links a {
+        font-size: 0.85rem;
+        padding: 5px 10px;
+    }
+    #theme-toggle {
+        left: 15px; /* Adjust position slightly */
+    }
+     .nav-links-container {
+         margin: 0 40px;
+    }
+}
+
+/* Specific adjustments for VERY small screens (e.g., iPhone SE width) */
+@media (max-width: 380px) { /* Targetting very narrow screens */
+
+    /* Reposition Theme Toggle */
+    #theme-toggle {
+        position: fixed; /* Take out of nav bar flow */
+        bottom: calc(var(--nav-height) + var(--nav-bottom-margin) + 15px); /* Position above floating nav */
+        right: 15px;
+        left: auto; /* Override previous left */
+        top: auto; /* Override previous top */
+        transform: none; /* Reset transform */
+        background-color: var(--card-bg); /* Give it a slight background */
+        border-radius: 50%;
+        padding: 8px; /* Slightly larger click area */
+        box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        z-index: 1050; /* Ensure it's above everything else potentially */
+    }
+    #theme-toggle svg {
+        width: 20px; /* Keep icon size manageable */
+        height: 20px;
+    }
+
+    /* Adjust Nav Bar content */
+    .main-header {
+         width: calc(100% - 16px);
+         margin-bottom: 10px;
+         border-radius: 25px;
+         height: calc(var(--nav-height) - 10px); /* Reduce height slightly more */
+    }
+    .nav-links-container {
+         margin: 0 10px; /* Reduce margin significantly as toggle is gone */
+         max-width: calc(100% - 20px); /* Allow it to use more space */
+    }
+    .nav-links a {
+        font-size: 0.75rem; /* Smallest readable font size */
+        padding: 4px 6px; /* Minimal padding */
+        min-height: 36px;
+    }
+    .nav-indicator {
+        bottom: 5px; /* Readjust indicator position */
+        height: calc(100% - 10px);
+        max-height: 36px;
+        border-radius: 18px;
+    }
+
+    /* Adjust body padding if needed due to fixed toggle */
+    /* body { padding-right: 50px; } */ /* Uncomment if content gets hidden under toggle */
+
+     /* Adjust footer padding/margin if needed */
+    .main-footer {
+        padding-bottom: var(--footer-padding-vertical); /* Ensure bottom padding */
+        margin-bottom: 15px; /* Add margin if toggle gets too close */
+    }
+}
 
 
 
 
-  
+/* --- Hobbies Section --- */
+.hobbies-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+    align-items: stretch; /* Make cards in the same row equal height */
+}
+
+.hobby-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 25px 20px;
+    border-radius: 10px;
+    background-color: var(--card-bg);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease; /* Added background-color transition */
+    /* Remove min-height if previously added, rely on grid stretch */
+}
+
+.hobby-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.hobby-icon {
+    margin-bottom: 15px;
+    height: 80px; /* Keep fixed height for icon area */
+    width: 100%; /* Ensure icon container takes width */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0; /* Prevent icon area from shrinking */
+}
+
+.hobby-card h3 {
+    margin-bottom: 10px;
+    font-size: 1.3rem;
+}
+
+.hobby-card p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    flex-grow: 1; /* Allow text to take remaining space */
+}
+
+/* --- NEW Hobby Animations (Theme-aware) --- */
+
+/* Volleyball: Player jump and ball arc */
+.volleyball-player {
+    animation: playerJump 2.5s infinite ease-in-out;
+    transform-origin: bottom center;
+}
+
+.volleyball-ball {
+    animation: ballArc 2.5s infinite ease-in-out;
+    transform-origin: center center;
+}
+
+@keyframes playerJump {
+    0%, 100% { transform: translateY(0) scaleY(1); }
+    50% { transform: translateY(-6px) scaleY(1.05); } /* Jump up and slightly stretch */
+}
+
+@keyframes ballArc {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    25% { transform: translate(-10px, -15px) rotate(-45deg); } /* Up and left */
+    50% { transform: translate(-20px, 0px) rotate(-90deg); }   /* Peak arc */
+    75% { transform: translate(-10px, 15px) rotate(-135deg); } /* Down and left */
+}
+
+/* Guitar: Pick strum and guitar sway */
+.guitar-pick {
+    animation: pickStrum 1.8s infinite ease-in-out;
+    transform-origin: 58px 38px; /* Approx top-right corner of pick */
+}
+
+.guitar-icon svg { /* Apply sway to the whole icon */
+    animation: guitarSway 4s infinite ease-in-out;
+    transform-origin: bottom center;
+}
+
+@keyframes pickStrum {
+    0%, 100% { transform: rotate(0deg) translateY(0); }
+    25% { transform: rotate(15deg) translateY(3px); } /* Down strum */
+    75% { transform: rotate(-10deg) translateY(0px); } /* Up strum */
+}
+
+@keyframes guitarSway {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(-2deg); } /* Gentle sway */
+}
+
+
+/* Cooking: Lid lift, steam rise, spoon stir */
+.cooking-icon .pot-lid {
+    animation: cookingLidLift 4s infinite ease-in-out;
+    transform-origin: right center;
+}
+
+.cooking-icon .steam {
+    /* Base opacity is 0 (set in HTML) */
+    animation: steamPuff 4s infinite ease-out;
+}
+/* Stagger steam animation */
+.cooking-icon .steam:nth-of-type(1) { animation-delay: 0.1s; }
+.cooking-icon .steam:nth-of-type(2) { animation-delay: 0.3s; }
+.cooking-icon .steam:nth-of-type(3) { animation-delay: 0.5s; }
+
+.cooking-icon .spoon {
+    animation: cookingSpoonStir 3s infinite linear;
+    transform-origin: 60px 30px; /* Approx center top of spoon handle */
+}
+
+@keyframes cookingLidLift {
+    0%, 100% { transform: rotate(0deg); }
+    20%, 80% { transform: rotate(-15deg); } /* Lifted state */
+}
+
+@keyframes steamPuff {
+    0%, 20% { opacity: 0; transform: translateY(0); } /* Hidden initially and while lid closed */
+    30% { opacity: 0.6; transform: translateY(-5px); } /* Appear as lid lifts */
+    80% { opacity: 0.3; transform: translateY(-10px); } /* Fade while up */
+    100% { opacity: 0; transform: translateY(-12px); } /* Gone */
+}
+
+@keyframes cookingSpoonStir {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* --- Remove previous simple animations --- */
+/* 
+.volleyball-ball {
+    animation: simpleBounce 2s infinite ease-in-out;
+    transform-origin: center bottom;
+}
+@keyframes simpleBounce { ... }
+
+.guitar-icon > svg, 
+.guitar-icon .guitar-body, 
+.guitar-icon .guitar-neck {
+    animation: gentleTilt 3s infinite ease-in-out;
+    transform-origin: center bottom; 
+}
+@keyframes gentleTilt { ... }
+
+.cooking-icon .spoon {
+    animation: gentleStir 3s infinite linear;
+    transform-origin: top center;
+}
+.cooking-icon .pot-lid {
+    animation: gentleLift 4s infinite ease-in-out;
+    transform-origin: right center;
+}
+@keyframes gentleStir { ... }
+@keyframes gentleLift { ... }
+*/
+
+/* Remove or comment out old animations and keyframes */
+/* (Keep the section commented out from previous step) */
+
