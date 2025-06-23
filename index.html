@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name - Portfolio</title>
+    <title>Riccardo Franceschini - Portfolio</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -19,6 +19,7 @@
                 <ul class="nav-links">
                     <li data-section-id="about"><a href="#about">About</a></li>
                     <li data-section-id="studies"><a href="#studies">Studies</a></li> <li data-section-id="experience"><a href="#experience">Experience</a></li>
+                    <li data-section-id="projects"><a href="#projects">Projects</a></li>
                     <li data-section-id="publications"><a href="#publications">Publications</a></li>
                     <li data-section-id="hobbies"><a href="#hobbies">Hobbies</a></li>
                 </ul>
@@ -30,35 +31,245 @@
     <main class="content-area">
         <section id="about" class="content-section active-section">
             <h2>About Me</h2>
-            <p>A brief bio about yourself, your interests, goals, etc.</p>
-            <p>This section is visible by default.</p>
+            <div class="contact-info">
+                <h1>Riccardo Franceschini</h1>
+                <h3>ROBOTICS ENGINEER</h3>
+                <p>Barcelona, ES | +34 634617162 | riccardo.franceschini@live.it</p>
+                <p>
+                    <a href="https://github.com/ricfrr" target="_blank">github.com/ricfrr</a> | 
+                    <a href="https://linkedin.com/in/ricfrr" target="_blank">linkedin.com/in/ricfrr</a>
+                </p>
+            </div>
+            <p>I am a curious and passionate robotic researcher who loves tackling new challenges and pushing the boundaries of deep learning. Always eager to explore, I thrive on turning innovative ideas into real-world solutions.</p>
+            
+            <div class="skills-languages-container">
+                <div class="skills-section">
+                    <h3>Technical Skills</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <span class="skill-name">Python</span>
+                            <div class="skill-bar"><div class="skill-fill" style="width: 95%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">C++</span>
+                            <div class="skill-bar"><div class="skill-fill" style="width: 85%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">PyTorch</span>
+                            <div class="skill-bar"><div class="skill-fill" style="width: 90%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">OpenCV</span>
+                            <div class="skill-bar"><div class="skill-fill" style="width: 88%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Docker</span>
+                            <div class="skill-bar"><div class="skill-fill" style="width: 80%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Git</span>
+                            <div class="skill-bar"><div class="skill-fill" style="width: 85%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">ROS1/2</span>
+                            <div class="skill-bar"><div class="skill-fill" style="width: 82%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">TensorFlow</span>
+                            <div class="skill-bar"><div class="skill-fill" style="width: 75%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Unity 3D</span>
+                            <div class="skill-bar"><div class="skill-fill" style="width: 70%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Open3D</span>
+                            <div class="skill-bar"><div class="skill-fill" style="width: 80%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Linux</span>
+                            <div class="skill-bar"><div class="skill-fill" style="width: 85%"></div></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="languages-section">
+                    <h3>Languages</h3>
+                    <div class="languages-grid">
+                        <div class="language-item">
+                            <span class="language-name">Italian</span>
+                            <span class="language-level">Native</span>
+                        </div>
+                        <div class="language-item">
+                            <span class="language-name">English</span>
+                            <span class="language-level">Professional</span>
+                        </div>
+                        <div class="language-item">
+                            <span class="language-name">Spanish</span>
+                            <span class="language-level">Professional</span>
+                        </div>
+                        <div class="language-item">
+                            <span class="language-name">Catalan</span>
+                            <span class="language-level">Basic</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <section id="studies" class="content-section">
-            <h2>Studies</h2>
-            <p>Details about your education, degrees, relevant coursework, academic achievements.</p>
-             <article class="education-item">
-                <h3>Degree Name - University Name</h3>
-                <p><em>Year Started - Year Ended/Expected</em></p>
-                <ul>
-                    <li>Notable project or thesis...</li>
-                    <li>Relevant courses...</li>
-                </ul>
+            <h2>Education</h2>
+            
+            <article class="education-item">
+                <h3>PhD, Human-Robot Interaction</h3>
+                <p><strong>DTU - Technical University of Denmark</strong></p>
+                <p><em>2021 - 2024</em></p>
+                <p><strong>Industrial Robotic & AI PhD</strong> at Danish Technical University conducted at Eurecat (Spain) under the MSCA-ITN programme</p>
+                <p><strong>Thesis Title:</strong> Designing a Human-Drone Interaction: Insights from the AeroAssistant Framework</p>
             </article>
-             </section>
+
+            <article class="education-item">
+                <h3>MSc, Autonomous Systems</h3>
+                <p><strong>University of Trento (Italy) and Aalto University (Finland)</strong></p>
+                <p><em>2018 - 2020</em></p>
+                <p><strong>European Double Program</strong> at University of Trento (Italy) and Aalto University (Finland) under the EIT Digital Master Programme</p>
+                <p><strong>Major:</strong> Robotics & AI | <strong>Minor:</strong> Business & Entrepreneurship</p>
+                <p><strong>Thesis Title:</strong> Feasible and adaptive attention-based models for multimodal trajectory prediction in urban driving scenarios</p>
+            </article>
+
+            <article class="education-item">
+                <h3>BSc, Computer Science</h3>
+                <p><strong>University of Trento, Italy</strong></p>
+                <p><em>2015 - 2018</em></p>
+                <p><strong>Bachelor degree</strong> at University of Trento, Italy, <strong>ranked 1st for CS in Italy</strong></p>
+            </article>
+        </section>
 
         <section id="experience" class="content-section">
             <h2>Work Experience</h2>
-            <article class="job">...</article>
+            
+            <article class="job">
+                <h3>Robotic Researcher</h3>
+                <p><strong>Eurecat</strong> | <em>2021 – Present</em></p>
+                <p>The work involves developing and deploying advanced autonomy and shared-autonomy teleoperation for aerial inspection. It integrates augmented reality elements and deep learning approaches, running on embedded hardware, to retain human decision-making while leveraging autonomy features.</p>
+                <p><strong>Technology used:</strong> C++, Python PyTorch, Robot Operating System (ROS1/2), OpenCV, Open3D, TensorFlow, Docker, Git</p>
+            </article>
+
+            <article class="job">
+                <h3>Deep Learning Researcher</h3>
+                <p><strong>University of Trento</strong> | <em>Feb 2020 – Jul 2021</em></p>
+                <p>Development of deep learning multimodal attention methods, combining extracted information from text, audio and video for emotion recognition in the context of human robot interaction.</p>
+                <p><strong>Technology used:</strong> Python, PyTorch, Numpy, Sci-kit, Pandas, Docker, Git</p>
+            </article>
+
+            <article class="job">
+                <h3>Deep Learning Researcher</h3>
+                <p><strong>Fondazione Bruno Kessler (FBK)</strong> | <em>Oct 2020 – Dec 2020</em></p>
+                <p>Research on for an external company on unsupervised human pose keypoint estimation from video sources.</p>
+                <p><strong>Technology used:</strong> Python, PyTorch, Numpy, Sci-kit, Pandas, Git</p>
+            </article>
+
+            <article class="job">
+                <h3>Deep Learning Researcher</h3>
+                <p><strong>Bosch</strong> | <em>Feb 2020 – Oct 2020</em></p>
+                <p>Development of deep learning attention methods for pedestrian and vehicle future trajectory prediction in the context of autonomous driving.</p>
+                <p><strong>Technology used:</strong> Python, PyTorch, Docker, Git</p>
+            </article>
+
+            <article class="job">
+                <h3>Full Stack Developer Intern</h3>
+                <p><strong>Zucchetti Healthcare</strong> | <em>Mar 2018 – Jun 2018</em></p>
+                <p>Development front-end and back-end of a Social Media Website in nursing houses for supporting reminisce activities.</p>
+                <p><strong>Technology used:</strong> HTML, CSS, React Js, Node Js, SQLite</p>
+            </article>
         </section>
+
+        <section id="projects" class="content-section">
+            <h2>Personal Projects</h2>
+            
+            <article class="project">
+                <h3>🎮 robo-boy</h3>
+                <p><strong>A web application for controlling ROS 2 robots, tailored for mobile usage. Inspired by retro handheld consoles.</strong></p>
+                <p><a href="https://github.com/tessel-la/robo-boy" target="_blank">🔗 GitHub Repository</a></p>
+                
+                <div class="project-features">
+                    <h4>Key Features:</h4>
+                    <ul>
+                        <li><strong>Multi-Platform Control:</strong> Specialized control interfaces for drones, robotic arms, and general robotics applications</li>
+                        <li><strong>Custom Gamepad Creator:</strong> Drag-and-drop interface for creating personalized control layouts with joysticks, buttons, D-pads, toggles, and sliders</li>
+                        <li><strong>Mobile-First Design:</strong> Optimized for touch devices with retro gaming aesthetics</li>
+                        <li><strong>ROS 2 Integration:</strong> Real-time communication with ROS 2 robots through WebSocket connections</li>
+                        <li><strong>Theme Customization:</strong> Multiple themes including custom color palette creation</li>
+                        <li><strong>3D Visualization:</strong> Point cloud and URDF model visualization capabilities</li>
+                        <li><strong>Voice Control:</strong> Voice command interface for hands-free robot operation</li>
+                        <li><strong>Containerized Deployment:</strong> Docker-based setup with reverse proxy for easy deployment</li>
+                    </ul>
+                </div>
+                
+                <div class="project-tech">
+                    <h4>Technology Stack:</h4>
+                    <p><strong>Frontend:</strong> React, TypeScript, Vite</p>
+                    <p><strong>ROS Integration:</strong> rosbridge_server, web_video_server</p>
+                    <p><strong>3D Graphics:</strong> Three.js for robot visualization</p>
+                    <p><strong>Deployment:</strong> Docker, Caddy reverse proxy</p>
+                    <p><strong>Styling:</strong> CSS3 with custom theme system</p>
+                </div>
+                
+                <div class="project-impact">
+                    <h4>Impact & Applications:</h4>
+                    <p>This project bridges the gap between complex robotics systems and intuitive user interfaces, making robot control accessible through familiar gaming paradigms. It's particularly valuable for:</p>
+                    <ul>
+                        <li>Remote robot teleoperation in research and industrial settings</li>
+                        <li>Educational robotics with engaging, game-like interfaces</li>
+                        <li>Rapid prototyping of robot control systems</li>
+                        <li>Mobile robot operation in field environments</li>
+                    </ul>
+                </div>
+            </article>
+        </section>
+
         <section id="publications" class="content-section">
-            <h2>Publications</h2>
-            <article class="publication">...</article>
+            <h2>Published Research</h2>
+            <p><strong>7 publications at international conferences and workshops</strong></p>
+            <p><a href="https://scholar.google.com" target="_blank">Google Scholar Profile</a></p>
+            
+            <article class="publication">
+                <h3>Point, Segment, and Inspect: Leveraging Promptable Segmentation Models for Semi-Autonomous Aerial Inspection</h3>
+                <p><strong>Authors:</strong> Riccardo Franceschini, Javier Rodriguez Marquez, Matteo Fumagalli, and Julian Cayero Becerra</p>
+                <p><em>International Symposium on Robot and Human Interactive Communication 2024</em></p>
+            </article>
+
+            <article class="publication">
+                <h3>Riding the Rollercoaster: Improving UAV Piloting Skills with Augmented Visualization and Collaborative Planning</h3>
+                <p><strong>Authors:</strong> R Franceschini, JR Marquez, M Fumagalli, JC Becerra</p>
+                <p><em>2024 International Conference on Unmanned Aircraft Systems</em></p>
+            </article>
+
+            <article class="publication">
+                <h3>Enhancing Human-Drone Interaction with Human-Meaningful Visual Feedback and Shared-Control Strategies</h3>
+                <p><strong>Authors:</strong> R Franceschini, M Fumagalli, JC Becerra</p>
+                <p><em>2023 International Conference on Unmanned Aircraft Systems</em></p>
+            </article>
+
+            <article class="publication">
+                <h3>Multimodal emotion recognition with modality-pairwise unsupervised contrastive loss</h3>
+                <p><strong>Authors:</strong> R Franceschini, E Fini, C Beyan, A Conti, F Arrigoni, E Ricci</p>
+                <p><em>2022 26th International Conference on Pattern Recognition (ICPR)</em></p>
+            </article>
+
+            <article class="publication">
+                <h3>Learn to efficiently exploit cost maps by combining RRT* with Reinforcement Learning</h3>
+                <p><strong>Authors:</strong> R Franceschini, M Fumagalli, JC Becerra</p>
+                <p><em>2022 IEEE International Symposium on Safety, Security, and Rescue Robotics</em></p>
+            </article>
+
+            <article class="publication">
+                <h3>Feasible and adaptive multimodal trajectory prediction with semantic maneuver fusion</h3>
+                <p><strong>Authors:</strong> H Berkemeyer, R Franceschini, T Tran, L Che, G Pipa</p>
+                <p><em>2021 IEEE International Conference on Robotics and Automation (ICRA)</em></p>
+            </article>
         </section>
-        <!-- <section id="hobbies" class="content-section">
-            <h2>Hobbies</h2>
-            <p>Details...</p>
-        </section> -->
+
         <section id="hobbies" class="content-section">
             <h2>Hobbies</h2>
             
@@ -143,7 +354,7 @@
     </main>
 
     <footer class="main-footer">
-        <p>&copy; <span id="current-year"></span> Your Name. All rights reserved.</p>
+        <p>&copy; <span id="current-year"></span> Riccardo Franceschini. All rights reserved.</p>
     </footer>
 
     <script src="script.js"></script>
