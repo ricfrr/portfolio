@@ -907,6 +907,33 @@ body {
     text-decoration: underline;
 }
 
+/* CV Download Button */
+.cv-download {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+}
+
+.cv-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: var(--link-color);
+    color: var(--color-black) !important;
+    padding: 12px 24px;
+    border-radius: 25px;
+    text-decoration: none !important;
+    font-weight: 600;
+    font-size: 1em;
+    transition: all 0.3s ease;
+}
+
+.cv-button:hover {
+    background-color: var(--link-hover-color);
+    color: var(--color-black) !important;
+    transform: translateY(-2px);
+}
+
 /* Responsive design for skills and languages */
 @media (max-width: 768px) {
     .skills-languages-container {
