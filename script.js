@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const linkRect = targetLi.getBoundingClientRect();
         const containerRect = navLinksContainer.getBoundingClientRect(); // Use navLinksContainer for relative positioning
 
-        // Calculate position relative to the navLinksContainer
+        // Calculate position relative to the navLinksContainer, accounting for scroll
         const offsetLeft = targetLi.offsetLeft; // Use offsetLeft relative to parent UL
         const targetWidth = linkRect.width; // Use bounding rect for accurate width
 
@@ -57,6 +57,34 @@ document.addEventListener('DOMContentLoaded', () => {
         // Update active class on list items
         navItems.forEach(item => item.classList.remove('active'));
         targetLi.classList.add('active');
+
+        // Ensure the active item is visible in horizontal scroll
+        scrollToActiveNavItem(targetLi);
+    }
+
+    function scrollToActiveNavItem(targetLi) {
+        if (!targetLi || !navLinksContainer) return;
+
+        // Check if horizontal scrolling is active (when container has overflow)
+        if (navLinksContainer.scrollWidth > navLinksContainer.clientWidth) {
+            const containerRect = navLinksContainer.getBoundingClientRect();
+            const linkRect = targetLi.getBoundingClientRect();
+            
+            // Calculate if the item is out of view
+            const isItemVisible = linkRect.left >= containerRect.left && 
+                                linkRect.right <= containerRect.right;
+            
+            if (!isItemVisible) {
+                // Calculate scroll position to center the item
+                const scrollLeft = targetLi.offsetLeft - (navLinksContainer.clientWidth / 2) + (targetLi.offsetWidth / 2);
+                
+                // Smooth scroll to the calculated position
+                navLinksContainer.scrollTo({
+                    left: Math.max(0, scrollLeft),
+                    behavior: 'smooth'
+                });
+            }
+        }
     }
 
     function showSection(sectionId) {
@@ -97,6 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (initialActiveLi) {
         setTimeout(() => {
              moveIndicator(initialActiveLi);
+             updateScrollFades(); // Set initial fade states
         }, 100); // Slightly longer delay to ensure layout is stable
     } else {
         console.warn("Could not determine initial active navigation item.");
@@ -114,11 +143,48 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // --- Dynamic fade indicators for scroll ---
+    function updateScrollFades() {
+        if (!navLinksContainer) return;
+        
+        // Only apply on small screens where scrolling is enabled
+        if (window.innerWidth <= 480 && navLinksContainer.scrollWidth > navLinksContainer.clientWidth) {
+            const scrollLeft = navLinksContainer.scrollLeft;
+            const maxScrollLeft = navLinksContainer.scrollWidth - navLinksContainer.clientWidth;
+            
+            // Get or create fade elements
+            const container = navLinksContainer;
+            const beforeEl = container.querySelector('::before') || container;
+            const afterEl = container.querySelector('::after') || container;
+            
+            // Update CSS custom properties for dynamic fade opacity
+            if (scrollLeft <= 5) {
+                container.style.setProperty('--fade-left-opacity', '0');
+            } else {
+                container.style.setProperty('--fade-left-opacity', '1');
+            }
+            
+            if (scrollLeft >= maxScrollLeft - 5) {
+                container.style.setProperty('--fade-right-opacity', '0');
+            } else {
+                container.style.setProperty('--fade-right-opacity', '1');
+            }
+        }
+    }
+
+    // Add scroll event listener for fade indicators
+    if (navLinksContainer) {
+        navLinksContainer.addEventListener('scroll', updateScrollFades);
+    }
+
     window.addEventListener('resize', () => {
         const currentActiveLi = document.querySelector('.nav-links li.active');
         if (currentActiveLi) {
             // Debounce or throttle this in a real application for performance
-             setTimeout(() => moveIndicator(currentActiveLi), 100);
+             setTimeout(() => {
+                 moveIndicator(currentActiveLi);
+                 updateScrollFades();
+             }, 100);
         }
     });
 

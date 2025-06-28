@@ -592,6 +592,7 @@ body {
 /* --- Responsiveness --- */
 
 /* Adjustments for standard small/medium screens */
+/* Improved responsive navigation */
 @media (max-width: 700px) {
     .main-header {
         max-width: none;
@@ -601,68 +602,164 @@ body {
     }
     .nav-links a {
         font-size: 0.85rem;
-        padding: 5px 10px;
+        padding: 5px 12px;
     }
     #theme-toggle {
-        left: 15px; /* Adjust position slightly */
+        left: 12px;
     }
-     .nav-links-container {
-         margin: 0 40px;
+    .nav-links-container {
+        margin: 0 45px;
     }
 }
 
-/* Specific adjustments for VERY small screens (e.g., iPhone SE width) */
-@media (max-width: 380px) { /* Targetting very narrow screens */
-
-    /* Reposition Theme Toggle */
-    #theme-toggle {
-        position: fixed; /* Take out of nav bar flow */
-        bottom: calc(var(--nav-height) + var(--nav-bottom-margin) + 15px); /* Position above floating nav */
-        right: 15px;
-        left: auto; /* Override previous left */
-        top: auto; /* Override previous top */
-        transform: none; /* Reset transform */
-        background-color: var(--card-bg); /* Give it a slight background */
-        border-radius: 50%;
-        padding: 8px; /* Slightly larger click area */
-        box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-        z-index: 1050; /* Ensure it's above everything else potentially */
-    }
-    #theme-toggle svg {
-        width: 20px; /* Keep icon size manageable */
-        height: 20px;
-    }
-
-    /* Adjust Nav Bar content */
-    .main-header {
-         width: calc(100% - 16px);
-         margin-bottom: 10px;
-         border-radius: 25px;
-         height: calc(var(--nav-height) - 10px); /* Reduce height slightly more */
+/* Medium-small screens */
+@media (max-width: 580px) {
+    .nav-links a {
+        font-size: 0.8rem;
+        padding: 4px 8px;
+        min-height: 40px;
     }
     .nav-links-container {
-         margin: 0 10px; /* Reduce margin significantly as toggle is gone */
-         max-width: calc(100% - 20px); /* Allow it to use more space */
-    }
-    .nav-links a {
-        font-size: 0.75rem; /* Smallest readable font size */
-        padding: 4px 6px; /* Minimal padding */
-        min-height: 36px;
+        margin: 0 40px;
     }
     .nav-indicator {
-        bottom: 5px; /* Readjust indicator position */
-        height: calc(100% - 10px);
+        max-height: 40px;
+    }
+}
+
+/* Small screens with horizontal scroll fallback */
+@media (max-width: 480px) {
+    .main-header {
+        width: calc(100% - 16px);
+        margin-bottom: 12px;
+        border-radius: 25px;
+        height: calc(var(--nav-height) - 5px);
+    }
+    
+    .nav-links-container {
+        margin: 0 35px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* IE/Edge */
+        position: relative;
+    }
+    
+    .nav-links-container::-webkit-scrollbar {
+        display: none; /* Chrome/Safari */
+    }
+    
+    /* Scroll fade indicators */
+    .nav-links-container {
+        --fade-left-opacity: 0;
+        --fade-right-opacity: 1;
+    }
+    
+    .nav-links-container::before,
+    .nav-links-container::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 15px;
+        pointer-events: none;
+        z-index: 3;
+        transition: opacity 0.3s ease;
+    }
+    
+    .nav-links-container::before {
+        left: 0;
+        background: linear-gradient(to right, var(--header-bg), transparent);
+        border-radius: 25px 0 0 25px;
+        opacity: var(--fade-left-opacity);
+    }
+    
+    .nav-links-container::after {
+        right: 0;
+        background: linear-gradient(to left, var(--header-bg), transparent);
+        border-radius: 0 25px 25px 0;
+        opacity: var(--fade-right-opacity);
+    }
+    
+    .nav-links {
+        min-width: max-content; /* Prevent wrapping */
+        padding: 0 10px; /* Padding to account for fade indicators */
+    }
+    
+    .nav-links a {
+        font-size: 0.78rem;
+        padding: 4px 10px;
+        min-height: 38px;
+        flex-shrink: 0; /* Prevent items from shrinking */
+    }
+    
+    .nav-indicator {
+        bottom: 6px;
+        height: calc(100% - 12px);
+        max-height: 38px;
+        border-radius: 19px;
+    }
+}
+
+/* Very small screens - compact layout */
+@media (max-width: 400px) {
+    #theme-toggle {
+        left: 8px;
+        padding: 4px;
+    }
+    
+    #theme-toggle svg {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .nav-links-container {
+        margin: 0 32px;
+    }
+    
+    .nav-links a {
+        font-size: 0.75rem;
+        padding: 3px 8px;
+        min-height: 36px;
+    }
+    
+    .nav-indicator {
         max-height: 36px;
         border-radius: 18px;
     }
+}
 
-    /* Adjust body padding if needed due to fixed toggle */
-    /* body { padding-right: 50px; } */ /* Uncomment if content gets hidden under toggle */
-
-     /* Adjust footer padding/margin if needed */
-    .main-footer {
-        padding-bottom: var(--footer-padding-vertical); /* Ensure bottom padding */
-        margin-bottom: 15px; /* Add margin if toggle gets too close */
+/* Extra small screens - ultra compact */
+@media (max-width: 350px) {
+    .main-header {
+        height: calc(var(--nav-height) - 8px);
+    }
+    
+    .nav-links-container {
+        margin: 0 28px;
+    }
+    
+    .nav-links a {
+        font-size: 0.72rem;
+        padding: 3px 6px;
+        min-height: 34px;
+    }
+    
+    .nav-indicator {
+        bottom: 5px;
+        height: calc(100% - 10px);
+        max-height: 34px;
+        border-radius: 17px;
+    }
+    
+    #theme-toggle {
+        left: 6px;
+        padding: 3px;
+    }
+    
+    #theme-toggle svg {
+        width: 18px;
+        height: 18px;
     }
 }
 
