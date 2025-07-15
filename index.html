@@ -18,8 +18,9 @@
             <div class="nav-links-container">
                 <ul class="nav-links">
                     <li data-section-id="about"><a href="#about">About</a></li>
-                    <li data-section-id="studies"><a href="#studies">Studies</a></li> <li data-section-id="experience"><a href="#experience">Experience</a></li>
+                    <li data-section-id="experience"><a href="#experience">Experience</a></li>
                     <li data-section-id="projects"><a href="#projects">Projects</a></li>
+                    <li data-section-id="studies"><a href="#studies">Studies</a></li> 
                     <li data-section-id="publications"><a href="#publications">Publications</a></li>
                     <li data-section-id="hobbies"><a href="#hobbies">Hobbies</a></li>
                 </ul>
@@ -70,6 +71,11 @@
                         <span class="skill-tag">Linux</span>
                         <span class="skill-tag">TensorFlow</span>
                         <span class="skill-tag">Unity 3D</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">CI/CD</span>
                     </div>
                 </div>
                 
@@ -95,6 +101,115 @@
                     </div>
                 </div>
             </div>
+        </section>
+
+        
+        <section id="experience" class="content-section">
+            <h2>Work Experience</h2>
+            
+            <article class="job">
+                <h3>Robotic Researcher</h3>
+                <p><strong>Eurecat</strong> | <em>2021 – Present</em></p>
+                <p>The work focuses on the development and deployment of advanced algorithms for both full and shared autonomy in aerial robotics. This address the entire pipeline, from sensor data extraction to final decision-making. I have experience with state-of-the-art algorithms across the perception pipeline, including localization, object detection, tracking, and planning. Additionally, I have worked with various neural-accelerated boards, both NVIDIA and non-NVIDIA, for running models on edge devices. The role also involved integrating human-in-the-loop systems for shared-autonomy algorithms, necessitating the creation of intuitive interfaces for robot interaction through Augmented Reality and Large Language Models (LLMs) </p>
+                
+                <div class="demo-videos">
+                    <h4>Public Availables Videos Demo:</h4>
+                    <p><a href="https://youtu.be/TvmkFXQlA60" target="_blank">🎥 Interactive Segmentation and Planning</a></p>
+                    <p><a href="https://youtu.be/Jp2hjVJBrSc" target="_blank">🎥 Collaborative Navigation</a></p>
+                </div>
+                
+                <p><strong>Technology used:</strong> C++, Python PyTorch, Robot Operating System (ROS1/2), OpenCV, Open3D, Unity3D, Nvidia Jetson, TensorFlow, LLM, Docker, Git</p>
+            </article>
+
+            <article class="job">
+                <h3>Deep Learning Researcher</h3>
+                <p><strong>University of Trento</strong> | <em>Feb 2020 – Jul 2021</em></p>
+                <p>Development of deep learning multimodal attention methods, combining extracted information from text, audio and video for emotion recognition in the context of human robot interaction.</p>
+                
+                <div class="experience-image">
+                    <img src="data/experience/university of trento/pairwise-unsup-contrastive.png" alt="Pairwise Unsupervised Contrastive Learning Architecture" class="research-image">
+                </div>
+                
+                <p><strong>Technology used:</strong> Python, PyTorch, Numpy, Sci-kit, Pandas, Docker, Git</p>
+            </article>
+
+            <article class="job">
+                <h3>Deep Learning Researcher</h3>
+                <p><strong>Fondazione Bruno Kessler (FBK)</strong> | <em>Oct 2020 – Dec 2020</em></p>
+                <p>Research for Huawei with a partnership with Fondazione Bruno Kessler on unsupervised human pose keypoint estimation from video sources.</p>
+                <p><strong>Technology used:</strong> Python, PyTorch, Numpy, Sci-kit, Pandas, Git</p>
+            </article>
+
+            <article class="job">
+                <h3>Deep Learning Researcher</h3>
+                <p><strong>Bosch</strong> | <em>Feb 2020 – Oct 2020</em></p>
+                <p>Development of deep learning attention methods for pedestrian and vehicle future trajectory prediction in the context of autonomous driving.</p>
+                
+                <div class="experience-image">
+                    <img src="data/experience/bosch/architecture.png" alt="Deep Learning Architecture for Trajectory Prediction" class="research-image">
+                </div>
+                
+                <p><strong>Technology used:</strong> Python, PyTorch, Docker, Git</p>
+            </article>
+
+            <article class="job">
+                <h3>Full Stack Developer Intern</h3>
+                <p><strong>Zucchetti Healthcare</strong> | <em>Mar 2018 – Jun 2018</em></p>
+                <p>Development front-end and back-end of a Social Media Website in nursing houses for supporting reminisce activities.</p>
+                <p><strong>Technology used:</strong> HTML, CSS, React Js, Node Js, SQLite</p>
+            </article>
+        </section>
+
+        <section id="projects" class="content-section">
+            <h2>Personal Projects</h2>
+            
+            <article class="project">
+                <h3>🎮 robo-boy</h3>
+                <p><strong>A web application for controlling ROS 2 robots, tailored for mobile usage. Inspired by retro handheld consoles.</strong></p>
+                <p><a href="https://tessel.la" target="_blank">🔗 Project Website</a></p>
+                <p><a href="https://github.com/tessel-la/robo-boy" target="_blank">🔗 GitHub Repository</a></p>
+                
+                <div class="project-video">
+                    <video controls autoplay muted loop class="robo-boy-video">
+                        <source src="data/projects/robo-boy/roboboy_1080p.webm" type="video/webm">
+                        <p>Your browser doesn't support video playback. <a href="data/projects/robo-boy/roboboy_1080p.webm">Download the video</a> to view it.</p>
+                    </video>
+                </div>
+                
+                <div class="project-features">
+                    <h4>Key Features:</h4>
+                    <ul>
+                        <li><strong>Multi-Platform Control:</strong> Specialized control interfaces for drones, robotic arms, and general robotics applications</li>
+                        <li><strong>Custom Gamepad Creator:</strong> Drag-and-drop interface for creating personalized control layouts with joysticks, buttons, D-pads, toggles, and sliders</li>
+                        <li><strong>Mobile-First Design:</strong> Optimized for touch devices with retro gaming aesthetics</li>
+                        <li><strong>ROS 2 Integration:</strong> Real-time communication with ROS 2 robots through WebSocket connections</li>
+                        <li><strong>Theme Customization:</strong> Multiple themes including custom color palette creation</li>
+                        <li><strong>3D Visualization:</strong> Point cloud and URDF model visualization capabilities</li>
+                        <li><strong>Voice Control:</strong> Voice command interface for hands-free robot operation</li>
+                        <li><strong>Containerized Deployment:</strong> Docker-based setup with reverse proxy for easy deployment</li>
+                    </ul>
+                </div>
+                
+                <div class="project-tech">
+                    <h4>Technology Stack:</h4>
+                    <p><strong>Frontend:</strong> React, TypeScript, Vite</p>
+                    <p><strong>ROS Integration:</strong> rosbridge_server, web_video_server</p>
+                    <p><strong>3D Graphics:</strong> Three.js for robot visualization</p>
+                    <p><strong>Deployment:</strong> Docker, Caddy reverse proxy</p>
+                    <p><strong>Styling:</strong> CSS3 with custom theme system</p>
+                </div>
+                
+                <div class="project-impact">
+                    <h4>Impact & Applications:</h4>
+                    <p>This project bridges the gap between complex robotics systems and intuitive user interfaces, making robot control accessible through familiar gaming paradigms. It's particularly valuable for:</p>
+                    <ul>
+                        <li>Remote robot teleoperation in research and industrial settings</li>
+                        <li>Educational robotics with engaging, game-like interfaces</li>
+                        <li>Rapid prototyping of robot control systems</li>
+                        <li>Mobile robot operation in field environments</li>
+                    </ul>
+                </div>
+            </article>
         </section>
 
         <section id="studies" class="content-section">
@@ -135,89 +250,6 @@
             </article>
         </section>
 
-        <section id="experience" class="content-section">
-            <h2>Work Experience</h2>
-            
-            <article class="job">
-                <h3>Robotic Researcher</h3>
-                <p><strong>Eurecat</strong> | <em>2021 – Present</em></p>
-                <p>The work focuses on the development and deployment of advanced algorithms for both full and shared autonomy in aerial robotics. This address the entire pipeline, from sensor data extraction to final decision-making. I have experience with state-of-the-art algorithms across the perception pipeline, including localization, object detection, tracking, and planning. Additionally, I have worked with various neural-accelerated boards, both NVIDIA and non-NVIDIA, for running models on edge devices. The role also involved integrating human-in-the-loop systems for shared-autonomy algorithms, necessitating the creation of intuitive interfaces for robot interaction through Augmented Reality and Large Language Models (LLMs) </p>
-                <p><strong>Technology used:</strong> C++, Python PyTorch, Robot Operating System (ROS1/2), OpenCV, Open3D, Unity3D, Nvidia Jetson, TensorFlow, LLM, Docker, Git</p>
-            </article>
-
-            <article class="job">
-                <h3>Deep Learning Researcher</h3>
-                <p><strong>University of Trento</strong> | <em>Feb 2020 – Jul 2021</em></p>
-                <p>Development of deep learning multimodal attention methods, combining extracted information from text, audio and video for emotion recognition in the context of human robot interaction.</p>
-                <p><strong>Technology used:</strong> Python, PyTorch, Numpy, Sci-kit, Pandas, Docker, Git</p>
-            </article>
-
-            <article class="job">
-                <h3>Deep Learning Researcher</h3>
-                <p><strong>Fondazione Bruno Kessler (FBK)</strong> | <em>Oct 2020 – Dec 2020</em></p>
-                <p>Research for Huawei with a partnership with Fondazione Bruno Kessler on unsupervised human pose keypoint estimation from video sources.</p>
-                <p><strong>Technology used:</strong> Python, PyTorch, Numpy, Sci-kit, Pandas, Git</p>
-            </article>
-
-            <article class="job">
-                <h3>Deep Learning Researcher</h3>
-                <p><strong>Bosch</strong> | <em>Feb 2020 – Oct 2020</em></p>
-                <p>Development of deep learning attention methods for pedestrian and vehicle future trajectory prediction in the context of autonomous driving.</p>
-                <p><strong>Technology used:</strong> Python, PyTorch, Docker, Git</p>
-            </article>
-
-            <article class="job">
-                <h3>Full Stack Developer Intern</h3>
-                <p><strong>Zucchetti Healthcare</strong> | <em>Mar 2018 – Jun 2018</em></p>
-                <p>Development front-end and back-end of a Social Media Website in nursing houses for supporting reminisce activities.</p>
-                <p><strong>Technology used:</strong> HTML, CSS, React Js, Node Js, SQLite</p>
-            </article>
-        </section>
-
-        <section id="projects" class="content-section">
-            <h2>Personal Projects</h2>
-            
-            <article class="project">
-                <h3>🎮 robo-boy</h3>
-                <p><strong>A web application for controlling ROS 2 robots, tailored for mobile usage. Inspired by retro handheld consoles.</strong></p>
-                <p><a href="https://tessel.la" target="_blank">🔗 Project Website</a></p>
-                <p><a href="https://github.com/tessel-la/robo-boy" target="_blank">🔗 GitHub Repository</a></p>
-                
-                <div class="project-features">
-                    <h4>Key Features:</h4>
-                    <ul>
-                        <li><strong>Multi-Platform Control:</strong> Specialized control interfaces for drones, robotic arms, and general robotics applications</li>
-                        <li><strong>Custom Gamepad Creator:</strong> Drag-and-drop interface for creating personalized control layouts with joysticks, buttons, D-pads, toggles, and sliders</li>
-                        <li><strong>Mobile-First Design:</strong> Optimized for touch devices with retro gaming aesthetics</li>
-                        <li><strong>ROS 2 Integration:</strong> Real-time communication with ROS 2 robots through WebSocket connections</li>
-                        <li><strong>Theme Customization:</strong> Multiple themes including custom color palette creation</li>
-                        <li><strong>3D Visualization:</strong> Point cloud and URDF model visualization capabilities</li>
-                        <li><strong>Voice Control:</strong> Voice command interface for hands-free robot operation</li>
-                        <li><strong>Containerized Deployment:</strong> Docker-based setup with reverse proxy for easy deployment</li>
-                    </ul>
-                </div>
-                
-                <div class="project-tech">
-                    <h4>Technology Stack:</h4>
-                    <p><strong>Frontend:</strong> React, TypeScript, Vite</p>
-                    <p><strong>ROS Integration:</strong> rosbridge_server, web_video_server</p>
-                    <p><strong>3D Graphics:</strong> Three.js for robot visualization</p>
-                    <p><strong>Deployment:</strong> Docker, Caddy reverse proxy</p>
-                    <p><strong>Styling:</strong> CSS3 with custom theme system</p>
-                </div>
-                
-                <div class="project-impact">
-                    <h4>Impact & Applications:</h4>
-                    <p>This project bridges the gap between complex robotics systems and intuitive user interfaces, making robot control accessible through familiar gaming paradigms. It's particularly valuable for:</p>
-                    <ul>
-                        <li>Remote robot teleoperation in research and industrial settings</li>
-                        <li>Educational robotics with engaging, game-like interfaces</li>
-                        <li>Rapid prototyping of robot control systems</li>
-                        <li>Mobile robot operation in field environments</li>
-                    </ul>
-                </div>
-            </article>
-        </section>
 
         <section id="publications" class="content-section">
             <h2>Published Research</h2>

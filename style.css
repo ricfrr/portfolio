@@ -1208,6 +1208,128 @@ body {
     }
 }
 
+/* --- Project Video Styling --- */
+.project-video {
+    margin: 25px 0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-video:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.robo-boy-video {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 12px;
+    background-color: var(--card-bg);
+}
+
+/* Responsive video styling */
+@media (max-width: 768px) {
+    .project-video {
+        margin: 20px 0;
+        border-radius: 8px;
+    }
+    
+    .robo-boy-video {
+        border-radius: 8px;
+    }
+}
+
+/* --- Experience Image Styling --- */
+.experience-image {
+    margin: 20px 0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: var(--card-bg);
+}
+
+.experience-image:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+.research-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+    background-color: var(--bg-color);
+    transition: opacity 0.3s ease;
+}
+
+.research-image:hover {
+    opacity: 0.95;
+}
+
+/* Responsive image styling */
+@media (max-width: 768px) {
+    .experience-image {
+        margin: 15px 0;
+        border-radius: 6px;
+    }
+    
+    .research-image {
+        border-radius: 6px;
+    }
+}
+
+/* --- Demo Videos Styling --- */
+.demo-videos {
+    margin: 20px 0;
+    padding: 15px;
+    background-color: var(--bg-color);
+    border-radius: 8px;
+    border-left: 3px solid var(--link-color);
+}
+
+.demo-videos h4 {
+    color: var(--text-color-strong);
+    font-size: 1.1em;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.demo-videos p {
+    margin: 8px 0;
+}
+
+.demo-videos a {
+    color: var(--link-color);
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.demo-videos a:hover {
+    color: var(--link-hover-color);
+    text-decoration: underline;
+    transform: translateX(3px);
+}
+
+/* Responsive demo videos styling */
+@media (max-width: 768px) {
+    .demo-videos {
+        margin: 15px 0;
+        padding: 12px;
+    }
+    
+    .demo-videos h4 {
+        font-size: 1em;
+    }
+}
+
 /* --- Remove previous simple animations --- */
 /* 
 .volleyball-ball {
