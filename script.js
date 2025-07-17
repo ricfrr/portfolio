@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const navLinksContainer = document.querySelector('.nav-links');
+    const navLinksContainerWrapper = document.querySelector('.nav-links-container');
     const navIndicator = document.querySelector('.nav-indicator');
     const sections = document.querySelectorAll('.content-section');
     const navItems = document.querySelectorAll('.nav-links li');
@@ -63,11 +64,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function scrollToActiveNavItem(targetLi) {
-        if (!targetLi || !navLinksContainer) return;
+        if (!targetLi || !navLinksContainerWrapper) return;
 
         // Check if horizontal scrolling is active (when container has overflow)
-        if (navLinksContainer.scrollWidth > navLinksContainer.clientWidth) {
-            const containerRect = navLinksContainer.getBoundingClientRect();
+        if (navLinksContainerWrapper.scrollWidth > navLinksContainerWrapper.clientWidth) {
+            const containerRect = navLinksContainerWrapper.getBoundingClientRect();
             const linkRect = targetLi.getBoundingClientRect();
             
             // Calculate if the item is out of view
@@ -76,10 +77,10 @@ document.addEventListener('DOMContentLoaded', () => {
             
             if (!isItemVisible) {
                 // Calculate scroll position to center the item
-                const scrollLeft = targetLi.offsetLeft - (navLinksContainer.clientWidth / 2) + (targetLi.offsetWidth / 2);
+                const scrollLeft = targetLi.offsetLeft - (navLinksContainerWrapper.clientWidth / 2) + (targetLi.offsetWidth / 2);
                 
                 // Smooth scroll to the calculated position
-                navLinksContainer.scrollTo({
+                navLinksContainerWrapper.scrollTo({
                     left: Math.max(0, scrollLeft),
                     behavior: 'smooth'
                 });
@@ -145,36 +146,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Dynamic fade indicators for scroll ---
     function updateScrollFades() {
-        if (!navLinksContainer) return;
+        if (!navLinksContainer || !navLinksContainerWrapper) return;
         
-        // Only apply on small screens where scrolling is enabled
-        if (window.innerWidth <= 480 && navLinksContainer.scrollWidth > navLinksContainer.clientWidth) {
-            const scrollLeft = navLinksContainer.scrollLeft;
-            const maxScrollLeft = navLinksContainer.scrollWidth - navLinksContainer.clientWidth;
+        // Only apply on small screens where scrolling is enabled (expanded to include all small screens)
+        if (window.innerWidth <= 480 && navLinksContainerWrapper.scrollWidth > navLinksContainerWrapper.clientWidth) {
+            const scrollLeft = navLinksContainerWrapper.scrollLeft;
+            const maxScrollLeft = navLinksContainerWrapper.scrollWidth - navLinksContainerWrapper.clientWidth;
             
-            // Get or create fade elements
-            const container = navLinksContainer;
-            const beforeEl = container.querySelector('::before') || container;
-            const afterEl = container.querySelector('::after') || container;
-            
-            // Update CSS custom properties for dynamic fade opacity
-            if (scrollLeft <= 5) {
-                container.style.setProperty('--fade-left-opacity', '0');
+            // Show left fade if we can scroll left (not at the beginning) - more generous threshold
+            if (scrollLeft > 5) {
+                navLinksContainerWrapper.classList.add('show-fade-left');
             } else {
-                container.style.setProperty('--fade-left-opacity', '1');
+                navLinksContainerWrapper.classList.remove('show-fade-left');
             }
             
-            if (scrollLeft >= maxScrollLeft - 5) {
-                container.style.setProperty('--fade-right-opacity', '0');
+            // Show right fade if we can scroll right (not at the end) - more generous threshold
+            if (scrollLeft < maxScrollLeft - 5) {
+                navLinksContainerWrapper.classList.add('show-fade-right');
             } else {
-                container.style.setProperty('--fade-right-opacity', '1');
+                navLinksContainerWrapper.classList.remove('show-fade-right');
             }
+        } else {
+            // Remove fade indicators on larger screens or when scrolling isn't needed
+            navLinksContainerWrapper.classList.remove('show-fade-left', 'show-fade-right');
         }
     }
 
     // Add scroll event listener for fade indicators
-    if (navLinksContainer) {
-        navLinksContainer.addEventListener('scroll', updateScrollFades);
+    if (navLinksContainerWrapper) {
+        navLinksContainerWrapper.addEventListener('scroll', updateScrollFades);
     }
 
     window.addEventListener('resize', () => {
