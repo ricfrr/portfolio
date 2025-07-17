@@ -705,7 +705,7 @@ body {
 /* Very small screens - compact layout */
 @media (max-width: 400px) {
     #theme-toggle {
-        left: 6px; /* Move closer to edge */
+        left: 3px; /* Even closer to edge for more nav space */
         padding: 3px;
     }
     
@@ -785,7 +785,7 @@ body {
     }
     
     #theme-toggle {
-        left: 4px; /* Move closer to edge */
+        left: 2px; /* Even closer to edge for maximum nav space */
         padding: 2px;
     }
     
@@ -821,7 +821,7 @@ body {
     }
     
     #theme-toggle {
-        left: 2px; /* Very close to edge */
+        left: 1px; /* Absolute edge position for maximum nav space */
         padding: 1px;
     }
     
@@ -844,7 +844,7 @@ body {
     
     .nav-links {
         min-width: max-content;
-        padding: 0 8px 0 22px; /* Maximum left padding for About section access */
+        padding: 0 8px 0 30px; /* Absolute maximum left padding for About section access */
     }
 }
 
