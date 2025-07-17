@@ -194,4 +194,57 @@ document.addEventListener('DOMContentLoaded', () => {
         yearSpan.textContent = new Date().getFullYear();
     }
 
+    // --- Typewriter Effect ---
+    const typewriterText = document.getElementById('typewriter-text');
+    const typewriterCursor = document.getElementById('typewriter-cursor');
+    
+    if (typewriterText && typewriterCursor) {
+        const phrases = [
+            'ROBOTICS AND AI',
+            'Computer Vision Engineer',
+            'Deep Learning Engineer'
+        ];
+        
+        let currentPhraseIndex = 0;
+        let currentCharIndex = 0;
+        let isTyping = true;
+        let isDeleting = false;
+        
+        function typewriterEffect() {
+            const currentPhrase = phrases[currentPhraseIndex];
+            
+            if (isTyping && !isDeleting) {
+                // Typing phase
+                if (currentCharIndex < currentPhrase.length) {
+                    typewriterText.textContent = currentPhrase.slice(0, currentCharIndex + 1);
+                    currentCharIndex++;
+                    setTimeout(typewriterEffect, 100); // Typing speed
+                } else {
+                    // Finished typing, wait then start deleting
+                    isTyping = false;
+                    setTimeout(() => {
+                        isDeleting = true;
+                        typewriterEffect();
+                    }, 2000); // Pause before deleting
+                }
+            } else if (isDeleting) {
+                // Deleting phase
+                if (currentCharIndex > 0) {
+                    typewriterText.textContent = currentPhrase.slice(0, currentCharIndex - 1);
+                    currentCharIndex--;
+                    setTimeout(typewriterEffect, 50); // Deleting speed (faster)
+                } else {
+                    // Finished deleting, move to next phrase
+                    isDeleting = false;
+                    isTyping = true;
+                    currentPhraseIndex = (currentPhraseIndex + 1) % phrases.length;
+                    setTimeout(typewriterEffect, 500); // Pause before typing next phrase
+                }
+            }
+        }
+        
+        // Start the typewriter effect after a short delay
+        setTimeout(typewriterEffect, 1000);
+    }
+
 }); // End DOMContentLoaded

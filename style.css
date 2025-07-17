@@ -898,6 +898,18 @@ body {
     to { transform: rotate(360deg); }
 }
 
+/* --- Typewriter Cursor Animation --- */
+#typewriter-cursor {
+    animation: typewriterBlink 1s infinite;
+    font-weight: 300;
+    color: var(--link-color);
+}
+
+@keyframes typewriterBlink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
 /* --- Skills and Languages Styling --- */
 .skills-languages-container {
     display: grid;
