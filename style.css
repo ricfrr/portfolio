@@ -1391,39 +1391,79 @@ body {
 .demo-videos h4 {
     color: var(--text-color-strong);
     font-size: 1.1em;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     font-weight: 600;
-}
-
-.demo-videos p {
-    margin: 8px 0;
-}
-
-.demo-videos a {
-    color: var(--link-color);
-    text-decoration: none;
-    font-weight: 600;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    transition: color 0.3s ease, transform 0.2s ease;
-}
-
-.demo-videos a:hover {
-    color: var(--link-hover-color);
-    text-decoration: underline;
-    transform: translateX(3px);
 }
 
 .demo-video-item {
-    margin: 20px 0;
+    margin: 15px 0;
 }
 
-.demo-video-item h5 {
-    color: var(--text-color-strong);
-    font-size: 1em;
-    margin-bottom: 10px;
+.video-toggle {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 15px;
+    background-color: var(--card-bg);
+    border: 2px solid var(--link-color);
+    border-radius: 8px;
+    color: var(--link-color);
     font-weight: 600;
+    font-size: 1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: left;
+    font-family: inherit;
+}
+
+.video-toggle:hover {
+    background-color: var(--link-color);
+    color: var(--color-black);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(174, 255, 0, 0.25);
+}
+
+.video-toggle[aria-expanded="true"] {
+    background-color: var(--link-color);
+    color: var(--color-black);
+    border-color: var(--link-color);
+}
+
+.video-toggle[aria-expanded="true"] .toggle-icon {
+    transform: rotate(90deg);
+}
+
+.toggle-icon {
+    display: inline-block;
+    transition: transform 0.3s ease;
+    font-size: 0.9em;
+    flex-shrink: 0;
+}
+
+.toggle-text {
+    flex-grow: 1;
+}
+
+.video-content {
+    margin-top: 15px;
+    animation: slideDown 0.3s ease-out;
+    overflow: hidden;
+}
+
+.video-content[hidden] {
+    display: none;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        max-height: 0;
+    }
+    to {
+        opacity: 1;
+        max-height: 1000px;
+    }
 }
 
 .video-wrapper {
@@ -1463,10 +1503,11 @@ body {
     }
     
     .demo-video-item {
-        margin: 15px 0;
+        margin: 12px 0;
     }
     
-    .demo-video-item h5 {
+    .video-toggle {
+        padding: 10px 12px;
         font-size: 0.9em;
     }
     

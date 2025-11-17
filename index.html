@@ -54,7 +54,7 @@
                         <a href="https://linkedin.com/in/ricfrr" target="_blank">linkedin.com/in/ricfrr</a>
                     </p>
                     <div class="cv-download">
-                        <a href="data/cv.pdf" download="Riccardo_Franceschini_CV.pdf" class="cv-button">
+                        <a href="data/cv_franceschini.pdf" download="Riccardo_Franceschini_CV.pdf" class="cv-button">
                             📄 Download CV
                         </a>
                     </div>
@@ -121,6 +121,8 @@
         
         <section id="experience" class="content-section">
             <h2>Work Experience</h2>
+            <div>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/GHp83tJYp2I?si=IHQjU9MIEob_Pn1O" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>            </div>
             
             <article class="job">
                 <h3>Robotic Researcher</h3>
@@ -129,9 +131,42 @@
                 
                 <div class="demo-videos">
                     <h4>Public Availables Videos Demo:</h4>
-                    <p><a href="https://youtu.be/FZUnk9AtiSg" target="_blank">🎥 LLM-Powered XR Control for Robots</a></p>
-                    <p><a href="https://youtu.be/TvmkFXQlA60" target="_blank">🎥 Interactive Segmentation and Planning</a></p>
-                    <p><a href="https://youtu.be/Jp2hjVJBrSc" target="_blank">🎥 Collaborative Navigation</a></p>
+                    
+                    <div class="demo-video-item">
+                        <button class="video-toggle" aria-expanded="false" aria-controls="video-1" data-video-id="FZUnk9AtiSg">
+                            <span class="toggle-icon">▶</span>
+                            <span class="toggle-text">🎥 LLM-Powered XR Control for Robots</span>
+                        </button>
+                        <div class="video-content" id="video-1" hidden>
+                            <div class="video-wrapper">
+                                <iframe width="560" height="315" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="demo-video-item">
+                        <button class="video-toggle" aria-expanded="false" aria-controls="video-2" data-video-id="TvmkFXQlA60">
+                            <span class="toggle-icon">▶</span>
+                            <span class="toggle-text">🎥 Interactive Segmentation and Planning</span>
+                        </button>
+                        <div class="video-content" id="video-2" hidden>
+                            <div class="video-wrapper">
+                                <iframe width="560" height="315" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="demo-video-item">
+                        <button class="video-toggle" aria-expanded="false" aria-controls="video-3" data-video-id="Jp2hjVJBrSc">
+                            <span class="toggle-icon">▶</span>
+                            <span class="toggle-text">🎥 Collaborative Navigation</span>
+                        </button>
+                        <div class="video-content" id="video-3" hidden>
+                            <div class="video-wrapper">
+                                <iframe width="560" height="315" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 
                 <p><strong>Technology used:</strong> C++, Python PyTorch, Robot Operating System (ROS1/2), OpenCV, Open3D, Unity3D, Nvidia Jetson, TensorFlow, LLM, Docker, Git</p>

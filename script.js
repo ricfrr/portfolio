@@ -247,4 +247,31 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(typewriterEffect, 1000);
     }
 
+    // --- Video Toggle Functionality ---
+    const videoToggles = document.querySelectorAll('.video-toggle');
+    
+    videoToggles.forEach(toggle => {
+        toggle.addEventListener('click', () => {
+            const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+            const videoContent = document.getElementById(toggle.getAttribute('aria-controls'));
+            const iframe = videoContent.querySelector('iframe');
+            const videoId = toggle.getAttribute('data-video-id');
+            
+            if (isExpanded) {
+                // Collapse
+                toggle.setAttribute('aria-expanded', 'false');
+                videoContent.hidden = true;
+            } else {
+                // Expand and load video if not already loaded
+                toggle.setAttribute('aria-expanded', 'true');
+                videoContent.hidden = false;
+                
+                // Lazy load: only set src when expanding (if not already set)
+                if (videoId && !iframe.src) {
+                    iframe.src = `https://www.youtube.com/embed/${videoId}?rel=0`;
+                }
+            }
+        });
+    });
+
 }); // End DOMContentLoaded
